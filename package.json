@@ -32,7 +32,7 @@
     "@angular/cli": "8.3.24",
     "@angular/compiler-cli": "8.2.14",
     "@types/chai": "4.1.7",
-    "@types/meteor": "1.4.23",
+    "@types/meteor": "1.4.39",
     "@types/mocha": "5.2.5",
     "@types/sinon": "5.0.7",
     "chai": "4.2.0",

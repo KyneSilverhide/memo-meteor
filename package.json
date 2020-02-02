@@ -25,7 +25,7 @@
     "masonry-layout": "4.2.2",
     "meteor-node-stubs": "0.4.1",
     "meteor-rxjs": "0.4.14",
-    "rxjs": "6.3.3",
+    "rxjs": "6.5.4",
     "zone.js": "0.8.26"
   },
   "devDependencies": {

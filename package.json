@@ -21,7 +21,7 @@
     "@ng-bootstrap/ng-bootstrap": "5.2.1",
     "bootstrap": "4.4.1",
     "bootswatch": "4.4.1",
-    "core-js": "2.5.7",
+    "core-js": "2.6.11",
     "masonry-layout": "4.2.2",
     "meteor-node-stubs": "0.4.1",
     "meteor-rxjs": "0.4.14",

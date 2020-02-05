@@ -1,0 +1,18 @@
+<h2>Categories</h2>
+
+<a routerLink="/categories/add">
+    <button class="btn btn-primary">
+        <fa-icon [icon]="addIcon"></fa-icon>
+        Add
+    </button>
+</a>
+
+<ul>
+    <li *ngFor="let category of categories | async">
+        {{category.name}}
+        <button (click)="removeCategory(category._id)" class="deleteBtn">
+            <fa-icon [icon]="deleteIcon"></fa-icon>
+            Delete
+        </button>
+    </li>
+</ul>

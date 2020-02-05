@@ -1,0 +1,29 @@
+<form [formGroup]="categoryForm" >
+    <fieldset>
+        <legend *ngIf="!categoryId">Create a new category</legend>
+        <legend *ngIf="categoryId">Edit category</legend>
+
+        <div class="form-group">
+            <label for="category-name">Name</label>
+            <input [ngClass]="{'is-invalid' : categoryForm.get(['name']).dirty && categoryForm.get(['name']).invalid,
+                   'is-valid': categoryForm.get(['name']).dirty && categoryForm.get(['name']).valid}" class="form-control" formControlName="name" id="category-name"
+                   type="text">
+        </div>
+        <div class="form-group">
+            <label for="category-icon">Icon</label>
+            <input [ngClass]="{'is-invalid' : categoryForm.get(['icon']).dirty && categoryForm.get(['icon']).invalid,
+                   'is-valid': categoryForm.get(['icon']).dirty && categoryForm.get(['icon']).valid}" class="form-control" formControlName="icon" id="category-icon"
+                   type="text">
+        </div>
+        <div class="form-group">
+            <label for="category-color">Color</label>
+            <input [ngClass]="{'is-invalid' : categoryForm.get(['color']).dirty && categoryForm.get(['color']).invalid,
+                   'is-valid': categoryForm.get(['color']).dirty && categoryForm.get(['color']).valid}" class="form-control" formControlName="color" id="category-color"
+                   type="text">
+        </div>
+        <button (click)="saveCategory()" [disabled]="categoryForm.invalid" [ngClass]="{'disabled': categoryForm.invalid}" class="btn btn-primary" type="submit">
+            <fa-icon [icon]="saveIcon"></fa-icon>
+            Save
+        </button>
+    </fieldset>
+</form>

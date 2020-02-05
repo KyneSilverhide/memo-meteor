@@ -1,10 +1,8 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Meteor} from 'meteor/meteor';
-import {MeteorUserService} from "../../shared/services/meteor-user.service";
+import {MeteorUserService} from "../../services/meteor-user.service";
 import {Router} from "@angular/router";
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { faTasks } from '@fortawesome/free-solid-svg-icons';
-import { faFolder } from '@fortawesome/free-solid-svg-icons';
+import {faFolder, faSignOutAlt, faTasks} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'navbar-component',

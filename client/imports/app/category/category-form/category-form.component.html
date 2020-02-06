@@ -1,4 +1,4 @@
-<form [formGroup]="categoryForm" >
+<form [formGroup]="categoryForm">
     <fieldset>
         <legend *ngIf="!categoryId">Create a new category</legend>
         <legend *ngIf="categoryId">Edit category</legend>
@@ -6,24 +6,41 @@
         <div class="form-group">
             <label for="category-name">Name</label>
             <input [ngClass]="{'is-invalid' : categoryForm.get(['name']).dirty && categoryForm.get(['name']).invalid,
-                   'is-valid': categoryForm.get(['name']).dirty && categoryForm.get(['name']).valid}" class="form-control" formControlName="name" id="category-name"
+                   'is-valid': categoryForm.get(['name']).dirty && categoryForm.get(['name']).valid}"
+                   class="form-control" formControlName="name" id="category-name"
                    type="text">
         </div>
         <div class="form-group">
-            <label for="category-icon">Icon</label>
-            <input [ngClass]="{'is-invalid' : categoryForm.get(['icon']).dirty && categoryForm.get(['icon']).invalid,
-                   'is-valid': categoryForm.get(['icon']).dirty && categoryForm.get(['icon']).valid}" class="form-control" formControlName="icon" id="category-icon"
-                   type="text">
+            <label for="category-icon">Icon</label>&nbsp;
+            <button id="category-icon"  type="button" class="btn btn-outline-dark mr-2 mb-2" (click)="openIconPicker(content)"
+                    placement="right" [ngbTooltip]="categoryForm.get(['icon']).value">
+                <fa-icon [icon]="categoryForm.get(['icon']).value" size="2x"></fa-icon>
+            </button>
         </div>
         <div class="form-group">
             <label for="category-color">Color</label>
-            <input [ngClass]="{'is-invalid' : categoryForm.get(['color']).dirty && categoryForm.get(['color']).invalid,
-                   'is-valid': categoryForm.get(['color']).dirty && categoryForm.get(['color']).valid}" class="form-control" formControlName="color" id="category-color"
-                   type="text">
+            <color-chrome id="category-color" [color]="categoryForm.get(['color']).value"
+                          (onChangeComplete)="setColor($event)"></color-chrome>
         </div>
-        <button (click)="saveCategory()" [disabled]="categoryForm.invalid" [ngClass]="{'disabled': categoryForm.invalid}" class="btn btn-primary" type="submit">
+        <button (click)="saveCategory()" [disabled]="categoryForm.invalid"
+                [ngClass]="{'disabled': categoryForm.invalid}" class="btn btn-primary" type="submit">
             <fa-icon [icon]="saveIcon"></fa-icon>
             Save
         </button>
     </fieldset>
 </form>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Pick an icon...</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <icon-picker (iconPicked)="setIcon($event)"></icon-picker>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+    </div>
+</ng-template>

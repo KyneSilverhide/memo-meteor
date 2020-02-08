@@ -1,28 +1,39 @@
-<h2>Categories</h2>
+<div class="d-flex justify-content-between align-items-center">
+    <h2>Categories</h2>
+    <a routerLink="/categories/add">
+        <button class="btn btn-primary">
+            <fa-icon [icon]="addIcon"></fa-icon>
+            Add a new category
+        </button>
+    </a>
+</div>
+<hr/>
 
-<a routerLink="/categories/add">
-    <button class="btn btn-primary">
-        <fa-icon [icon]="addIcon"></fa-icon>
-        Add
-    </button>
-</a>
-<hr />
+<div *ngIf="(categories | async)?.length == 0" class="alert alert-info" role="alert">
+    <fa-icon [icon]="infoIcon"></fa-icon>
+    Oops ! You don't have any category yet.
+</div>
 
 <table class="table table-striped">
     <tbody>
-    <tr *ngFor="let category of categories | async; index as i">
-        <th scope="row">{{ i + 1 }}</th>
+    <tr *ngFor="let category of categories | async" class="category-row">
+        <td>
+            <span [style.background-color]="category.color" class="dot"></span>
+        </td>
         <td>
             {{ category.name }}
         </td>
-        <td> <fa-icon [icon]="['fas', category.icon]" size="2x"></fa-icon></td>
-        <td [bgColor]="category.color" [style.width]="'100px'"></td>
+        <td>
+            <fa-icon [icon]="['fas', category.icon]" size="2x"></fa-icon>
+        </td>
         <td>
             <button type="button" class="btn btn-secondary btn-sm" (click)="editCategory(category._id)">
-                <fa-icon [icon]="editIcon"></fa-icon> Edit
+                <fa-icon [icon]="editIcon"></fa-icon>
+                Edit
             </button>&nbsp;
-            <button type="button" class="btn btn-danger btn-sm" (click)="removeCategory(category._id)">
-                <fa-icon [icon]="deleteIcon"></fa-icon> Delete
+            <button (click)="removeCategory(category)" class="btn btn-danger btn-sm" type="button">
+                <fa-icon [icon]="deleteIcon"></fa-icon>
+                Delete
             </button>
         </td>
     </tr>

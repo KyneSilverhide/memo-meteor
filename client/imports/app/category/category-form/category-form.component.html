@@ -1,8 +1,13 @@
 <form [formGroup]="categoryForm">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 *ngIf="!categoryId">Create a new category</h2>
+        <h2 *ngIf="categoryId">Edit category : {{categoryForm.get(['name']).value}}</h2>
+        <button (click)="goBackToList()" class="btn btn-secondary">
+            <fa-icon [icon]="backIcon"></fa-icon>
+            Back to the list
+        </button>
+    </div>
     <fieldset>
-        <legend *ngIf="!categoryId">Create a new category</legend>
-        <legend *ngIf="categoryId">Edit category</legend>
-
         <div class="form-group">
             <label for="category-name">Name</label>
             <input [ngClass]="{'is-invalid' : categoryForm.get(['name']).dirty && categoryForm.get(['name']).invalid,
@@ -19,8 +24,8 @@
         </div>
         <div class="form-group">
             <label for="category-color">Color</label>
-            <color-chrome id="category-color" [color]="categoryForm.get(['color']).value"
-                          (onChangeComplete)="setColor($event)"></color-chrome>
+            <color-circle (onChangeComplete)="setColor($event)" [color]="categoryForm.get(['color']).value"
+                          id="category-color"></color-circle>
         </div>
         <button (click)="saveCategory()" [disabled]="categoryForm.invalid"
                 [ngClass]="{'disabled': categoryForm.invalid}" class="btn btn-primary" type="submit">
@@ -41,6 +46,6 @@
         <icon-picker (iconPicked)="setIcon($event)"></icon-picker>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+        <p>Click on an icon to pick it</p>
     </div>
 </ng-template>

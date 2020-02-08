@@ -6,10 +6,11 @@ import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.
 import {NavbarComponent} from "./components/navbar/navbar.component";
 import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {ColorChromeModule} from "ngx-color/chrome";
-import { IconPickerComponent } from './components/icon-picker/icon-picker.component';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { IconFilterPipe } from './pipes/icon-filter.pipe';
+import {IconPickerComponent} from './components/icon-picker/icon-picker.component';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+import {IconFilterPipe} from './pipes/icon-filter.pipe';
+import {ToastsComponent} from './components/toast/toasts.component';
+import {ColorCircleModule} from "ngx-color/circle";
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { IconFilterPipe } from './pipes/icon-filter.pipe';
         NavbarComponent,
         IconPickerComponent,
         IconFilterPipe,
+        ToastsComponent,
     ],
     imports: [
         CommonModule,
@@ -25,17 +27,18 @@ import { IconFilterPipe } from './pipes/icon-filter.pipe';
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
-        ColorChromeModule,
+        ColorCircleModule,
     ],
     exports: [
         CommonModule,
         NgbModule,
         FontAwesomeModule,
         ReactiveFormsModule,
-        ColorChromeModule,
+        ColorCircleModule,
         PageNotFoundComponent,
         NavbarComponent,
-        IconPickerComponent
+        IconPickerComponent,
+        ToastsComponent
     ]
 })
 export class SharedModule {

@@ -1,13 +1,16 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {ICONS} from "./icons";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
     selector: 'icon-picker',
     templateUrl: './icon-picker.component.html',
-    styleUrls: ['./icon-picker.component.css'],
+    styleUrls: ['./icon-picker.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IconPickerComponent {
+
+    searchIcon = faSearch;
 
     icons: FontAwesomeIcon[] = [];
     searchText = '';

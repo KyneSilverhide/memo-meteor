@@ -13,6 +13,17 @@ Meteor.methods({
             owner: this.userId
         });
     },
+    updateCategory(id: string, name: string, icon: string, color: string) {
+        if (!this.userId || !id) {
+            return;
+        }
+        Categories.update({_id: id}, {
+            name: name,
+            icon: icon,
+            color: color,
+            owner: this.userId
+        });
+    },
     removeCategory(_id: string) {
         if (!this.userId) {
             return;

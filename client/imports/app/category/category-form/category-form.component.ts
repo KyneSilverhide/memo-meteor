@@ -40,7 +40,7 @@ export class CategoryFormComponent implements OnInit {
                 if (params.categoryId) {
                     this.categoryId = params.categoryId;
                     this.categorySubscription = MeteorObservable.subscribe('category', params.categoryId).subscribe(() => {
-                        const category = Categories.findOne();
+                        const category = Categories.findOne({_id: this.categoryId});
                         this.categoryForm.patchValue({
                             'name': category.name,
                             'icon': category.icon,

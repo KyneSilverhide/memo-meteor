@@ -4,7 +4,13 @@
     "start": "meteor run",
     "start:prod": "AOT=1 ROLLUP=1 meteor --production",
     "test": "TEST_BROWSER_DRIVER=puppeteer meteor test --driver-package=ardatan:mocha --raw-logs",
-    "test:ci": "TEST_BROWSER_DRIVER=puppeteer meteor test --driver-package=ardatan:mocha --raw-logs --once"
+    "test:ci": "TEST_BROWSER_DRIVER=puppeteer meteor test --driver-package=ardatan:mocha --raw-logs --once",
+    "lint": "eslint \"**/*.ts\""
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint"
+    ]
   },
   "dependencies": {
     "@angular/common": "8.2.14",
@@ -26,10 +32,16 @@
     "meteor-node-stubs": "0.4.1",
     "meteor-rxjs": "0.4.14",
     "ngx-color": "4.1.1",
+    "prettier": "^1.19.1",
     "rxjs": "6.5.4",
     "zone.js": "0.10.2"
   },
   "devDependencies": {
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "tslint-clean-code": "^0.2.10",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
     "@angular/cli": "8.3.24",
     "@angular/compiler-cli": "8.2.14",
     "@types/chai": "4.2.8",
@@ -37,6 +49,9 @@
     "@types/mocha": "7.0.1",
     "@types/sinon": "7.5.1",
     "chai": "4.2.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "mocha": "7.0.1",
     "puppeteer": "1.20.0",
     "sinon": "8.1.1",

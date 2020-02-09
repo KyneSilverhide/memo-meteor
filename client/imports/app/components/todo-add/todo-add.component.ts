@@ -8,6 +8,7 @@ import { Meteor } from 'meteor/meteor';
 })
 export class TodoAddComponent {
   content: string;
+
   addTodo() {
     Meteor.call('addTodo', this.content);
     this.content = null;

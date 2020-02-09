@@ -1,35 +1,38 @@
-import {Meteor} from 'meteor/meteor';
-import {Categories} from "../../../imports/collections/categories";
+import { Meteor } from 'meteor/meteor';
+import { Categories } from '../../../imports/collections/categories';
 
 Meteor.methods({
-    addCategory(name: string, icon: string, color: string) {
-        if (!this.userId) {
-            return;
-        }
-        Categories.insert({
-            name: name,
-            icon: icon,
-            color: color,
-            owner: this.userId
-        });
-    },
-    updateCategory(id: string, name: string, icon: string, color: string) {
-        if (!this.userId || !id) {
-            return;
-        }
-        Categories.update({_id: id}, {
-            name: name,
-            icon: icon,
-            color: color,
-            owner: this.userId
-        });
-    },
-    removeCategory(_id: string) {
-        if (!this.userId) {
-            return;
-        }
-        Categories.remove({
-            _id
-        })
+  addCategory(name: string, icon: string, color: string) {
+    if (!this.userId) {
+      return;
     }
+    Categories.insert({
+      name,
+      icon,
+      color,
+      owner: this.userId
+    });
+  },
+  updateCategory(id: string, name: string, icon: string, color: string) {
+    if (!this.userId || !id) {
+      return;
+    }
+    Categories.update(
+      { _id: id },
+      {
+        name,
+        icon,
+        color,
+        owner: this.userId
+      }
+    );
+  },
+  removeCategory(_id: string) {
+    if (!this.userId) {
+      return;
+    }
+    Categories.remove({
+      _id
+    });
+  }
 });

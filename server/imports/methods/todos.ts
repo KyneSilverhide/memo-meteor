@@ -11,6 +11,6 @@ Meteor.methods({
   removeTodo(_id: string) {
     Todos.remove({
       _id
-    })
+    });
   }
-})
+});

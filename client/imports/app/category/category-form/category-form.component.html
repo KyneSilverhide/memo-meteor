@@ -13,7 +13,7 @@
             <input [ngClass]="{'is-invalid' : categoryForm.get(['name']).dirty && categoryForm.get(['name']).invalid,
                    'is-valid': categoryForm.get(['name']).dirty && categoryForm.get(['name']).valid}"
                    class="form-control" formControlName="name" id="category-name"
-                   type="text">
+                   autocomplete="off" type="text">
         </div>
         <div class="form-group">
             <label for="category-icon">Icon</label>&nbsp;

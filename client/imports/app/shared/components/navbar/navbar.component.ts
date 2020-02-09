@@ -1,43 +1,46 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {Meteor} from 'meteor/meteor';
-import {MeteorUserService} from "../../services/meteor-user.service";
-import {Router} from "@angular/router";
-import {faFolder, faSignOutAlt, faTasks} from '@fortawesome/free-solid-svg-icons';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Meteor } from 'meteor/meteor';
+import { Router } from '@angular/router';
+import { Accounts } from 'meteor/accounts-base';
+import { faFolder, faSignOutAlt, faTasks } from '@fortawesome/free-solid-svg-icons';
+import { MeteorUserService } from '../../services/meteor-user.service';
 
 @Component({
-    selector: 'navbar-component',
-    templateUrl: 'navbar.component.html',
-    styleUrls: ['navbar.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'navbar-component',
+  templateUrl: 'navbar.component.html',
+  styleUrls: ['navbar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit {
+  user: Meteor.User;
 
-    user: Meteor.User;
-    navbarOpen = false;
-    signOutIcon = faSignOutAlt;
-    folderIcon = faFolder;
-    taskIcon = faTasks;
+  navbarOpen = false;
 
-    constructor(private meteorUserService: MeteorUserService, private router: Router, private cd: ChangeDetectorRef) {
-    }
+  signOutIcon = faSignOutAlt;
 
-    ngOnInit(): void {
-        this.meteorUserService.updateUser();
-        this.meteorUserService.getUserSubscription().subscribe(user => {
-            this.user = user;
-            this.cd.detectChanges();
-        });
-    }
+  folderIcon = faFolder;
 
-    toggleNavbar() {
-        this.navbarOpen = !this.navbarOpen;
-        this.cd.detectChanges();
-    }
+  taskIcon = faTasks;
 
-    logout() {
-        Accounts.logout(() => {
-            this.meteorUserService.clearUser();
-            this.router.navigate(['login']);
-        });
-    }
+  constructor(private meteorUserService: MeteorUserService, private router: Router, private cd: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
+    this.meteorUserService.updateUser();
+    this.meteorUserService.getUserSubscription().subscribe(user => {
+      this.user = user;
+      this.cd.detectChanges();
+    });
+  }
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+    this.cd.detectChanges();
+  }
+
+  logout() {
+    Accounts.logout(() => {
+      this.meteorUserService.clearUser();
+      this.router.navigate(['login']);
+    });
+  }
 }

@@ -1,13 +1,12 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {FontAwesomeIcon} from "../components/icon-picker/icon-picker.component";
+import { Pipe, PipeTransform } from '@angular/core';
+import { FontAwesomeIcon } from '../components/icon-picker/icon-picker.component';
 
 @Pipe({
   name: 'iconFilter'
 })
 export class IconFilterPipe implements PipeTransform {
-
   transform(icons: FontAwesomeIcon[], searchText: string): FontAwesomeIcon[] {
-    if(!searchText ||searchText.trim() === '') {
+    if (!searchText || searchText.trim() === '') {
       return icons;
     }
     return icons.filter(icon => {
@@ -15,5 +14,4 @@ export class IconFilterPipe implements PipeTransform {
       return icon[key].includes(searchText.toLowerCase());
     });
   }
-
 }

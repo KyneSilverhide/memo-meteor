@@ -1,27 +1,26 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {ToastService} from "../../services/toast.service";
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
-    selector: 'app-toasts',
-    templateUrl: './toasts.component.html',
-    styleUrls: ['./toasts.component.scss']
+  selector: 'app-toasts',
+  templateUrl: './toasts.component.html',
+  styleUrls: ['./toasts.component.scss']
 })
 export class ToastsComponent implements OnInit {
-    toasts: any[];
+  toasts: any[];
 
-    constructor(private toastService: ToastService) {
-    }
+  constructor(private toastService: ToastService) {}
 
-    ngOnInit() {
-        this.toasts = this.toastService.getToasts();
-    }
+  ngOnInit() {
+    this.toasts = this.toastService.getToasts();
+  }
 
-    isTemplate(toast) {
-        return toast.textOrTpl instanceof TemplateRef;
-    }
+  isTemplate(toast) {
+    return toast.textOrTpl instanceof TemplateRef;
+  }
 
-    remove(toast: any) {
-        this.toastService.remove(toast);
-        this.toasts = this.toastService.getToasts();
-    }
+  remove(toast: any) {
+    this.toastService.remove(toast);
+    this.toasts = this.toastService.getToasts();
+  }
 }

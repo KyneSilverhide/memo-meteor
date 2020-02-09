@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit, TemplateRef } from '@angular/core';
+import { Component, NgZone, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { faBackspace, faSave } from '@fortawesome/free-solid-svg-icons';
 import { Meteor } from 'meteor/meteor';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,9 +16,8 @@ import { ToastService } from '../../shared/services/toast.service';
   templateUrl: './category-form.component.html',
   styleUrls: ['./category-form.component.scss']
 })
-export class CategoryFormComponent implements OnInit {
+export class CategoryFormComponent implements OnInit, OnDestroy {
   saveIcon = faSave;
-
   backIcon = faBackspace;
 
   categoryForm = this.fb.group({
@@ -28,9 +27,7 @@ export class CategoryFormComponent implements OnInit {
   });
 
   categoryId: string;
-
   pickerModal: NgbModalRef;
-
   categorySubscription: Subscription;
 
   constructor(
@@ -42,7 +39,7 @@ export class CategoryFormComponent implements OnInit {
     private toastService: ToastService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       if (params.categoryId) {
         this.categoryId = params.categoryId;
@@ -58,7 +55,7 @@ export class CategoryFormComponent implements OnInit {
     });
   }
 
-  saveCategory() {
+  saveCategory(): void {
     if (this.categoryForm.valid) {
       const name = this.categoryForm.get(['name']).value;
       const icon = this.categoryForm.get(['icon']).value;
@@ -71,11 +68,13 @@ export class CategoryFormComponent implements OnInit {
     }
   }
 
-  goBackToList() {
-    this.zone.run(() => this.router.navigateByUrl('/categories'));
+  goBackToList(): void {
+    this.router.navigateByUrl('/categories').then(() => {
+      /**/
+    });
   }
 
-  setIcon(newIcon: FontAwesomeIcon) {
+  setIcon(newIcon: FontAwesomeIcon): void {
     const key = Object.keys(newIcon)[0];
     const iconName = newIcon[key];
     this.categoryForm.patchValue({ icon: iconName });
@@ -84,33 +83,43 @@ export class CategoryFormComponent implements OnInit {
     }
   }
 
-  openIconPicker(content: TemplateRef<any>) {
+  openIconPicker(content: TemplateRef<any>): void {
     this.pickerModal = this.modalService.open(content, { centered: true });
   }
 
-  setColor($event: ColorEvent) {
+  setColor($event: ColorEvent): void {
     this.categoryForm.patchValue({ color: $event.color.hex });
   }
 
-  private createCategory(name, icon, color) {
+  private createCategory(name, icon, color): void {
     Meteor.call('addCategory', name, icon, color, error => {
-      if (!error) {
-        this.goBackToList();
-        this.toastService.success('Category created !');
-      } else {
-        this.toastService.error(error);
-      }
+      this.zone.run(() => {
+        if (!error) {
+          this.goBackToList();
+          this.toastService.success('Category created !');
+        } else {
+          this.toastService.error(error);
+        }
+      });
     });
   }
 
-  private updateCategory(id, name, icon, color) {
+  private updateCategory(id, name, icon, color): void {
     Meteor.call('updateCategory', id, name, icon, color, error => {
-      if (!error) {
-        this.zone.run(() => this.router.navigateByUrl('/categories'));
-        this.toastService.success('Category edited !');
-      } else {
-        this.toastService.error(error);
-      }
+      this.zone.run(() => {
+        if (!error) {
+          this.goBackToList();
+          this.toastService.success('Category edited !');
+        } else {
+          this.toastService.error(error);
+        }
+      });
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.categorySubscription) {
+      this.categorySubscription.unsubscribe();
+    }
   }
 }

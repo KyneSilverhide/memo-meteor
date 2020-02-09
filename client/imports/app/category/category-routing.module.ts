@@ -14,8 +14,8 @@ const routes = [
   },
   {
     path: 'add',
-    redirectTo: 'edit',
-    pathMatch: 'full'
+    component: CategoryFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit',

@@ -1,68 +1,29 @@
-<div class="container">
-    <div class="card-columns">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
+<div class="d-flex justify-content-between align-items-center">
+    <h2>Tasks</h2>
+    <a routerLink="/dashboard/add">
+        <button class="btn btn-primary">
+            <fa-icon [icon]="addIcon"></fa-icon>
+            Add a new task
+        </button>
+    </a>
+</div>
+<hr/>
 
+<div class="row flex-row flex-nowrap" *ngIf="tasks">
+    <div class="col-3" *ngFor="let category of categories | async">
+        <div class="card text-white mb-3" *ngFor="let task of tasks[category._id]" [style.background-color]="category.color">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <fa-icon [icon]="['fas', category.icon]"></fa-icon>
+                    {{ task.title }}
+                </h5>
+                <quill-view-html *ngIf="task.content" class="card-text"[content]="task.content"></quill-view-html>
+            </div>
+            <div class="card-footer d-flex justify-content-end">
+                <fa-icon [icon]="editIcon" (click)="editTask(task)"></fa-icon>&nbsp;
+                <fa-icon *ngIf="task.done" [icon]="cancelIcon" (click)="cancelTask(task)"></fa-icon>
+                <fa-icon *ngIf="!task.done" [icon]="completeIcon" (click)="completeTask(task)"></fa-icon>
+            </div>
+        </div>
     </div>
 </div>

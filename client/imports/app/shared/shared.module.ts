@@ -11,6 +11,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { IconPickerComponent } from './components/icon-picker/icon-picker.component';
 import { IconFilterPipe } from './pipes/icon-filter.pipe';
 import { ToastsComponent } from './components/toast/toasts.component';
+import { QuillModule } from 'ngx-quill';
+import { QUILLCONFIG } from './quill-config';
 
 @NgModule({
   declarations: [PageNotFoundComponent, NavbarComponent, IconPickerComponent, IconFilterPipe, ToastsComponent],
@@ -21,7 +23,8 @@ import { ToastsComponent } from './components/toast/toasts.component';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    ColorCircleModule
+    ColorCircleModule,
+    QuillModule.forRoot(QUILLCONFIG)
   ],
   exports: [
     CommonModule,
@@ -29,6 +32,7 @@ import { ToastsComponent } from './components/toast/toasts.component';
     FontAwesomeModule,
     ReactiveFormsModule,
     ColorCircleModule,
+    QuillModule,
     PageNotFoundComponent,
     NavbarComponent,
     IconPickerComponent,

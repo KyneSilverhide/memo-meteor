@@ -1,0 +1,44 @@
+<div class="container">
+    <form [formGroup]="taskForm">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 *ngIf="!taskId">Create a new task</h2>
+            <h2 *ngIf="taskId">Edit task : {{taskForm.get(['title']).value}}</h2>
+            <div>
+                <button (click)="goBackToList()" class="btn btn-secondary">
+                    <fa-icon [icon]="backIcon"></fa-icon>
+                    Back to the list
+                </button>&nbsp;
+                <button (click)="saveTask()" [disabled]="taskForm.invalid"
+                        [ngClass]="{'disabled': taskForm.invalid}" class="btn btn-primary" type="submit">
+                    <fa-icon [icon]="saveIcon"></fa-icon>
+                    Save
+                </button>
+            </div>
+        </div>
+        <fieldset>
+            <div class="form-group">
+                <label for="task-title">Title</label>
+                <input [ngClass]="{'is-invalid' : taskForm.get(['title']).dirty && taskForm.get(['title']).invalid,
+                   'is-valid': taskForm.get(['title']).dirty && taskForm.get(['title']).valid}"
+                       class="form-control" formControlName="title" id="task-title"
+                       autocomplete="off" type="text">
+            </div>
+            <div class="form-group">
+                <label for="task-title">Category</label>
+                <div class="btn-group btn-group-toggle category-selector" ngbRadioGroup name="categoryId"
+                     formControlName="categoryId">
+                    <label ngbButtonLabel class="btn btn-secondary" *ngFor="let category of userCategories | async"
+                           [style.background-color]="category.color">
+                        <input ngbButton type="radio" [value]="category._id">
+                        <fa-icon [icon]="['fas', category.icon]"></fa-icon>&nbsp;{{category.name}}
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="task-content">Content</label>
+                <quill-editor id="task-content" [formControl]="taskForm.controls['content']"
+                              [styles]="{height: '200px'}"></quill-editor>
+            </div>
+        </fieldset>
+    </form>
+</div>

@@ -20,10 +20,11 @@ Meteor.methods({
     Categories.update(
       { _id: id },
       {
-        name,
-        icon,
-        color,
-        owner: this.userId
+        $set: {
+          name,
+          icon,
+          color
+        }
       }
     );
   },

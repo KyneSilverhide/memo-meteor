@@ -35,19 +35,19 @@ export class CategoryListComponent implements OnInit, OnDestroy {
     private zone: NgZone
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.categoriesSubscription = MeteorObservable.subscribe('categories').subscribe(() => {
       this.categories = Categories.find();
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.categoriesSubscription) {
       this.categoriesSubscription.unsubscribe();
     }
   }
 
-  removeCategory(category: Category) {
+  removeCategory(category: Category): void {
     const deleteModalRef = this.modalService.open(CategoryDeleteComponent, {
       centered: true
     });
@@ -55,11 +55,13 @@ export class CategoryListComponent implements OnInit, OnDestroy {
       value => {
         if (value === true) {
           Meteor.call('removeCategory', category._id, error => {
-            if (!error) {
-              this.zone.run(() => this.toastService.success('Category deleted !'));
-            } else {
-              this.zone.run(() => this.toastService.error(error));
-            }
+            this.zone.run(() => {
+              if (!error) {
+                this.toastService.success('Category deleted !');
+              } else {
+                this.toastService.error(error);
+              }
+            });
           });
         }
       },
@@ -70,9 +72,13 @@ export class CategoryListComponent implements OnInit, OnDestroy {
     deleteModalRef.componentInstance.categoryName = category.name;
   }
 
-  editCategory(id: string) {
-    this.router.navigate(['/categories/edit'], {
-      queryParams: { categoryId: id }
-    });
+  editCategory(id: string): void {
+    this.router
+      .navigate(['/categories/edit'], {
+        queryParams: { categoryId: id }
+      })
+      .then(() => {
+        /**/
+      });
   }
 }

@@ -42,7 +42,7 @@
     "tslint-clean-code": "^0.2.10",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
-    "@angular/cli": "8.3.24",
+    "@angular/cli": "8.3.25",
     "@angular/compiler-cli": "8.2.14",
     "@types/chai": "4.2.8",
     "@types/meteor": "1.4.23",

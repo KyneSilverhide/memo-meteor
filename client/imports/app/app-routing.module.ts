@@ -18,11 +18,11 @@ const routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => module.dynamicImport('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
     path: 'categories',
-    loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
+    loadChildren: () => module.dynamicImport('./category/category.module').then(m => m.CategoryModule)
   },
   {
     path: '**',

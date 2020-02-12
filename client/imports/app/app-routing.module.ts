@@ -4,8 +4,12 @@ import { RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { LoginGuard } from './shared/guards/login.guard';
+import { DASHBOARDROUTES } from './dashboard/dashboard-routes';
+import { CATEGORYROUTES } from './category/category-routes';
 
 const routes = [
+  ...DASHBOARDROUTES,
+  ...CATEGORYROUTES,
   {
     path: '',
     redirectTo: '/dashboard',
@@ -15,14 +19,6 @@ const routes = [
     path: 'login',
     component: LoginComponent,
     canActivate: [LoginGuard]
-  },
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-  },
-  {
-    path: 'categories',
-    loadChildren: () => import('./category/category.module').then(m => m.CategoryModule)
   },
   {
     path: '**',

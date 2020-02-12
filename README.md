@@ -20,11 +20,22 @@ Angular-Meteor : https://github.com/Urigo/angular-meteor
 * Install dependencies : `npm install`
 * Star development server `npm start`
 
-## Commands
-- `$ npm run start` - Run the Meteor application.
-- `$ npm run start:prod` - Run the Meteor application in production mode.
-- `$ npm run build` - Creates a Meteor build version under `./build/` directory.
-- `$ npm run clear` - Resets Meteor's cache and clears the MongoDB collections.
-- `$ npm run meteor:update` - Updates Meteor's version and it's dependencies.
-- `$ npm run test` - Executes Meteor in test mode with Mocha.
-- `$ npm run test:ci` - Executes Meteor in test mode with Mocha for CI (run once).
+## Production build
+Bundle the project
+```
+meteor build ../build
+```
+Unpack the bundle, install dependencies
+```
+cd ../build
+tar xvzf memo-meteor.tar.gz
+cd bundle/programs/server
+npm install // This works only with node 10
+```
+
+Run the project (from /build/bundle)
+```
+MONGO_URL=mongodb://[IP]:27017/myapp PORT=[PORT] ROOT_URL=[http://...] node main.js
+```
+
+Note : You'll also have to change the Security configuration and change the URLs to be able to use Google authentication on your production server.

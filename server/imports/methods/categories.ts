@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Categories } from '../../../imports/collections/categories';
+import { Tasks } from '../../../imports/collections/tasks';
 
 Meteor.methods({
   addCategory(name: string, icon: string, color: string) {
@@ -32,6 +33,9 @@ Meteor.methods({
     if (!this.userId) {
       return;
     }
+    Tasks.remove({
+      categoryId: _id
+    });
     Categories.remove({
       _id
     });

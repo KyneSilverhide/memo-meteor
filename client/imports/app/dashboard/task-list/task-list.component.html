@@ -1,28 +1,38 @@
-<div class="d-flex justify-content-between align-items-center">
-    <h2>Tasks</h2>
-    <a routerLink="/dashboard/add">
-        <button class="btn btn-primary">
-            <fa-icon [icon]="addIcon"></fa-icon>
-            Add a new task
-        </button>
-    </a>
+<div class="d-flex justify-content-end align-items-center">
+    <div class="completed-filter">
+        <label for="done-toggle">Hide completed tasks</label>&nbsp;
+        <ngx-switch id="done-toggle" [status]="hideCompletedTasks" [onText]="'Yes'" [offText]="'No'"
+                    (statusChange)="hideCompletedTasks = !hideCompletedTasks">
+        </ngx-switch>
+    </div>
+    <div>
+        <a routerLink="/dashboard/add">
+            <button class="btn btn-primary">
+                <fa-icon [icon]="addIcon"></fa-icon>
+                Add a new task
+            </button>
+        </a>
+    </div>
 </div>
 <hr/>
 
 <div class="row flex-row flex-nowrap" *ngIf="tasks">
     <div class="col-3" *ngFor="let category of categories | async">
-        <div class="card text-white mb-3" *ngFor="let task of tasks[category._id]" [style.background-color]="category.color">
+        <div class="card text-white mb-3" *ngFor="let task of tasks[category._id] | taskOrder:hideCompletedTasks"
+             [style.background-color]="category.color" [ngClass]="{'card-done': task.done}">
             <div class="card-body">
-                <h5 class="card-title">
+                <h5 class="card-title" placement="top" [ngbTooltip]="category.name">
                     <fa-icon [icon]="['fas', category.icon]"></fa-icon>
                     {{ task.title }}
                 </h5>
-                <quill-view-html *ngIf="task.content" class="card-text"[content]="task.content"></quill-view-html>
+                <quill-view-html *ngIf="task.content" class="card-text" [content]="task.content"></quill-view-html>
             </div>
             <div class="card-footer d-flex justify-content-end">
-                <fa-icon [icon]="editIcon" (click)="editTask(task)"></fa-icon>&nbsp;
-                <fa-icon *ngIf="task.done" [icon]="cancelIcon" (click)="cancelTask(task)"></fa-icon>
-                <fa-icon *ngIf="!task.done" [icon]="completeIcon" (click)="completeTask(task)"></fa-icon>
+                <fa-icon [icon]="editIcon" (click)="editTask(task)" placement="top" [ngbTooltip]="'Edit'"></fa-icon>&nbsp;
+                <fa-icon *ngIf="task.done" [icon]="cancelIcon" (click)="cancelTask(task)" placement="top"
+                         [ngbTooltip]="'Cancel'"></fa-icon>
+                <fa-icon *ngIf="!task.done" [icon]="completeIcon" (click)="completeTask(task)" placement="top"
+                         [ngbTooltip]="'Complete'"></fa-icon>
             </div>
         </div>
     </div>

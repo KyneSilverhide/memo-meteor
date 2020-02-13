@@ -13,9 +13,18 @@ import { IconFilterPipe } from './pipes/icon-filter.pipe';
 import { ToastsComponent } from './components/toast/toasts.component';
 import { QuillModule } from 'ngx-quill';
 import { QUILLCONFIG } from './quill-config';
+import { TaskOrderPipe } from './pipes/task-order.pipe';
+import { NgxBootstrapSwitchModule } from 'ngx-bootstrap-switch';
 
 @NgModule({
-  declarations: [PageNotFoundComponent, NavbarComponent, IconPickerComponent, IconFilterPipe, ToastsComponent],
+  declarations: [
+    PageNotFoundComponent,
+    NavbarComponent,
+    IconPickerComponent,
+    IconFilterPipe,
+    ToastsComponent,
+    TaskOrderPipe
+  ],
   imports: [
     CommonModule,
     NgbModule,
@@ -24,6 +33,7 @@ import { QUILLCONFIG } from './quill-config';
     FormsModule,
     ReactiveFormsModule,
     ColorCircleModule,
+    NgxBootstrapSwitchModule,
     QuillModule.forRoot(QUILLCONFIG)
   ],
   exports: [
@@ -33,10 +43,12 @@ import { QUILLCONFIG } from './quill-config';
     ReactiveFormsModule,
     ColorCircleModule,
     QuillModule,
+    NgxBootstrapSwitchModule,
     PageNotFoundComponent,
     NavbarComponent,
     IconPickerComponent,
-    ToastsComponent
+    ToastsComponent,
+    TaskOrderPipe
   ]
 })
 export class SharedModule {

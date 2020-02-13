@@ -26,6 +26,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   editIcon = faEdit;
   cancelIcon = faUndo;
   completeIcon = faCheck;
+  hideCompletedTasks = true;
 
   constructor(private router: Router, private toastService: ToastService, private zone: NgZone) {
     /**/

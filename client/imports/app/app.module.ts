@@ -7,9 +7,18 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CategoryModule } from './category/category.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports: [BrowserModule, CategoryModule, DashboardModule, FormsModule, SharedModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    CategoryModule,
+    DashboardModule,
+    FormsModule,
+    SharedModule,
+    AppRoutingModule
+  ],
   declarations: [AppComponent, LoginComponent],
   bootstrap: [AppComponent]
 })

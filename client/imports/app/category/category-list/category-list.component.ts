@@ -54,15 +54,7 @@ export class CategoryListComponent implements OnInit, OnDestroy {
     deleteModalRef.result.then(
       value => {
         if (value === true) {
-          Meteor.call('removeCategory', category._id, error => {
-            this.zone.run(() => {
-              if (!error) {
-                this.toastService.success('Category deleted !');
-              } else {
-                this.toastService.error(error);
-              }
-            });
-          });
+          this.removeCategoryNow(category);
         }
       },
       () => {
@@ -70,6 +62,19 @@ export class CategoryListComponent implements OnInit, OnDestroy {
       }
     );
     deleteModalRef.componentInstance.categoryName = category.name;
+    deleteModalRef.componentInstance.categoryId = category._id;
+  }
+
+  private removeCategoryNow(category: Category): void {
+    Meteor.call('removeCategory', category._id, error => {
+      this.zone.run(() => {
+        if (!error) {
+          this.toastService.success('Category deleted !');
+        } else {
+          this.toastService.error(error);
+        }
+      });
+    });
   }
 
   editCategory(id: string): void {

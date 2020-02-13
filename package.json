@@ -13,6 +13,7 @@
     ]
   },
   "dependencies": {
+    "@angular/animations": "8.2.14",
     "@angular/common": "8.2.14",
     "@angular/compiler": "8.2.14",
     "@angular/core": "8.2.14",
@@ -30,6 +31,7 @@
     "core-js": "2.6.11",
     "meteor-node-stubs": "0.4.1",
     "meteor-rxjs": "0.4.14",
+    "ngx-bootstrap-switch": "0.0.3",
     "ngx-color": "4.1.1",
     "ngx-quill": "8.0.0",
     "prettier": "1.19.1",

@@ -6,6 +6,9 @@ import { Task } from '../../../../../imports/models/task';
 })
 export class TaskOrderPipe implements PipeTransform {
   transform(tasks: Task[], hideCompletedTasks: boolean): Task[] {
+    if (!tasks) {
+      return [];
+    }
     const filteredTasks = [...tasks];
     return filteredTasks
       .filter(task => {

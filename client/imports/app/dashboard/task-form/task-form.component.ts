@@ -1,5 +1,5 @@
 import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
-import { faBackspace, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faBackspace, faCheck, faSave, faTrash, faUndo } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
@@ -10,6 +10,7 @@ import { Categories } from '../../../../../imports/collections/categories';
 import { Meteor } from 'meteor/meteor';
 import { Category } from '../../../../../imports/models/category';
 import { Tasks } from '../../../../../imports/collections/tasks';
+import { TaskDeleteComponent } from './task-delete/task-delete.component';
 
 @Component({
   selector: 'app-task-form',
@@ -19,6 +20,9 @@ import { Tasks } from '../../../../../imports/collections/tasks';
 export class TaskFormComponent implements OnInit, OnDestroy {
   saveIcon = faSave;
   backIcon = faBackspace;
+  cancelIcon = faUndo;
+  completeIcon = faCheck;
+  deleteIcon = faTrash;
 
   taskForm = this.fb.group({
     title: ['', Validators.required],
@@ -27,6 +31,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
   });
 
   taskId: string;
+  done: boolean;
   categorySubscription: Subscription;
   taskSubscription: Subscription;
   userCategories: Observable<Category[]>;
@@ -50,6 +55,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
         this.taskId = params.taskId;
         this.taskSubscription = MeteorObservable.subscribe('task', params.taskId).subscribe(() => {
           const task = Tasks.findOne({ _id: this.taskId });
+          this.done = task.done;
           this.taskForm.patchValue({
             title: task.title,
             content: task.content,
@@ -74,11 +80,9 @@ export class TaskFormComponent implements OnInit, OnDestroy {
   }
 
   goBackToList(): void {
-    this.zone
-      .run(() => this.router.navigateByUrl('/dashboard'))
-      .then(() => {
-        /**/
-      });
+    this.router.navigateByUrl('/dashboard').then(() => {
+      /**/
+    });
   }
 
   private createTask(title, categoryId, content): void {
@@ -114,5 +118,61 @@ export class TaskFormComponent implements OnInit, OnDestroy {
     if (this.taskSubscription) {
       this.taskSubscription.unsubscribe();
     }
+  }
+
+  cancelTask(): void {
+    Meteor.call('cancelTask', this.taskId, error => {
+      this.zone.run(() => {
+        if (!error) {
+          this.done = false;
+          this.toastService.success('Task ' + this.taskForm.get(['title']).value + ' canceled !');
+        } else {
+          this.toastService.error(error);
+        }
+      });
+    });
+  }
+
+  completeTask(): void {
+    Meteor.call('completeTask', this.taskId, error => {
+      this.zone.run(() => {
+        if (!error) {
+          this.done = true;
+          this.toastService.success('Task ' + this.taskForm.get(['title']).value + ' completed !');
+        } else {
+          this.toastService.error(error);
+        }
+      });
+    });
+  }
+
+  deleteTask(): void {
+    const deleteModalRef = this.modalService.open(TaskDeleteComponent, {
+      centered: true
+    });
+    deleteModalRef.result.then(
+      value => {
+        if (value === true) {
+          this.deleteTaskNow();
+        }
+      },
+      () => {
+        // Dismissed
+      }
+    );
+    deleteModalRef.componentInstance.taskName = this.taskForm.get(['title']).value;
+  }
+
+  private deleteTaskNow(): void {
+    Meteor.call('removeTask', this.taskId, error => {
+      this.zone.run(() => {
+        if (!error) {
+          this.toastService.success('Task ' + this.taskForm.get(['title']).value + ' deleted !');
+          this.goBackToList();
+        } else {
+          this.toastService.error(error);
+        }
+      });
+    });
   }
 }

@@ -3,11 +3,23 @@
         <div class="d-flex justify-content-between align-items-center">
             <h2 *ngIf="!taskId">Create a new task</h2>
             <h2 *ngIf="taskId">Edit task : {{taskForm.get(['title']).value}}</h2>
-            <div>
+            <div class="actions">
                 <button (click)="goBackToList()" class="btn btn-secondary">
                     <fa-icon [icon]="backIcon"></fa-icon>
                     Back to the list
-                </button>&nbsp;
+                </button>
+                <button *ngIf="taskId && !done" (click)="completeTask()" class="btn btn-success" type="submit">
+                    <fa-icon [icon]="completeIcon"></fa-icon>
+                    Complete
+                </button>
+                <button *ngIf="taskId && done" (click)="cancelTask()" class="btn btn-secondary" type="submit">
+                    <fa-icon [icon]="cancelIcon"></fa-icon>
+                    Cancel
+                </button>
+                <button *ngIf="taskId" (click)="deleteTask()" class="btn btn-danger" type="submit">
+                    <fa-icon [icon]="deleteIcon"></fa-icon>
+                    Delete
+                </button>
                 <button (click)="saveTask()" [disabled]="taskForm.invalid"
                         [ngClass]="{'disabled': taskForm.invalid}" class="btn btn-primary" type="submit">
                     <fa-icon [icon]="saveIcon"></fa-icon>

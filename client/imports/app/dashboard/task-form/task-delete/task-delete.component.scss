@@ -1,0 +1,9 @@
+@import "node_modules/bootswatch/dist/flatly/variables";
+
+strong {
+  font-weight: bold;
+}
+
+span.task-count {
+  color: $danger;
+}

@@ -4,7 +4,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="modal-body" *ngIf="taskCount">
+<div class="modal-body">
     <p>Are you sure you want to delete category <strong>{{ categoryName }}</strong> ?<p>
     <p *ngIf="taskCount == 1">
         This will also remove <span class="task-count">{{taskCount}}</span> task in this category !

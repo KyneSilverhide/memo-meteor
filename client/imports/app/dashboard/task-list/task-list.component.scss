@@ -23,8 +23,12 @@ div.card-done {
   filter: saturate(35%) brightness(125%)
 }
 
-div.completed-filter {
-  margin-right: 50px;
+div.action-container {
+  margin-left: 50px;
+
+  button.status {
+    cursor: default;
+  }
 }
 
 ::ng-deep #done-toggle {

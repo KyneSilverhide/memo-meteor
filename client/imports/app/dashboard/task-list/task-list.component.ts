@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Categories } from '../../../../../imports/collections/categories';
 import { Category } from '../../../../../imports/models/category';
 import { Task, TaskByCategory } from '../../../../../imports/models/task';
-import { faCheck, faEdit, faPlus, faUndo } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faEdit, faInfo, faPlus, faSun, faUndo } from '@fortawesome/free-solid-svg-icons';
 import { Tasks } from '../../../../../imports/collections/tasks';
 import { Router } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
@@ -17,9 +17,14 @@ import { ToastService } from '../../shared/services/toast.service';
 })
 export class TaskListComponent implements OnInit, OnDestroy {
   addIcon = faPlus;
+  infoIcon = faInfo;
+  allDoneIcon = faSun;
 
   categories: Observable<Category[]>;
   tasks: TaskByCategory;
+  taskCount: number;
+  completedTaskCount: number;
+  displayedTaskCount: number;
 
   private categoriesSubscription: Subscription;
   private tasksSubscription: Subscription;
@@ -37,7 +42,11 @@ export class TaskListComponent implements OnInit, OnDestroy {
       this.categories = Categories.find();
     });
     this.tasksSubscription = MeteorObservable.subscribe('tasks').subscribe(() => {
-      this.tasks = this.buildTaskByCategories(Tasks.find().fetch());
+      const dbTasks = Tasks.find().fetch();
+      this.taskCount = dbTasks.length;
+      this.completedTaskCount = dbTasks.filter(task => task.done).length;
+      this.displayedTaskCount = dbTasks.filter(task => !this.hideCompletedTasks || !task.done).length;
+      this.tasks = this.buildTaskByCategories(dbTasks);
     });
   }
 

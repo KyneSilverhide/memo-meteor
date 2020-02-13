@@ -1,11 +1,19 @@
-<div class="d-flex justify-content-end align-items-center">
-    <div class="completed-filter">
+<div class="d-flex justify-content-end align-items-center" *ngIf="taskCount > 0">
+    <div class="action-container">
+        <button type="button" class="btn btn-success status">
+            Completed tasks <span class="badge badge-light">{{completedTaskCount}}</span>
+        </button>&nbsp;
+        <button type="button" class="btn btn-secondary status">
+            All tasks <span class="badge badge-light">{{taskCount}}</span>
+        </button>
+    </div>
+    <div class="action-container" *ngIf="taskCount > 0">
         <label for="done-toggle">Hide completed tasks</label>&nbsp;
         <ngx-switch id="done-toggle" [status]="hideCompletedTasks" [onText]="'Yes'" [offText]="'No'"
                     (statusChange)="hideCompletedTasks = !hideCompletedTasks">
         </ngx-switch>
     </div>
-    <div>
+    <div class="action-container" *ngIf="displayedTaskCount > 0">
         <a routerLink="/dashboard/add">
             <button class="btn btn-primary">
                 <fa-icon [icon]="addIcon"></fa-icon>
@@ -15,6 +23,33 @@
     </div>
 </div>
 <hr/>
+
+<div class="container">
+    <div *ngIf="(categories | async)?.length == 0" class="alert alert-info" role="alert">
+        <fa-icon [icon]="infoIcon"></fa-icon>
+        Hey ! You don't have any category yet. &nbsp;
+        <a routerLink="/categories/add">
+            <button class="btn btn-primary">
+                <fa-icon [icon]="addIcon"></fa-icon>
+                Add a new category
+            </button>
+        </a>
+    </div>
+
+    <div *ngIf="(categories | async)?.length > 0 && displayedTaskCount == 0"
+         class="alert alert-success d-flex justify-content-between" role="alert">
+        <div class="d-flex align-items-center">
+            <fa-icon [icon]="allDoneIcon" size="2x"></fa-icon> &nbsp;
+            Great, you don't have any task left !
+        </div>
+        <a routerLink="/tasks/add">
+            <button class="btn btn-primary">
+                <fa-icon [icon]="addIcon"></fa-icon>
+                Add a new task
+            </button>
+        </a>
+    </div>
+</div>
 
 <div class="row flex-row flex-nowrap" *ngIf="tasks">
     <div class="col-3" *ngFor="let category of categories | async">

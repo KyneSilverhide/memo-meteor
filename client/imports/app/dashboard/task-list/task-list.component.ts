@@ -4,7 +4,6 @@ import { Observable, Subscription } from 'rxjs';
 import { Categories } from '../../../../../imports/collections/categories';
 import { Category } from '../../../../../imports/models/category';
 import { Task, TaskByCategory } from '../../../../../imports/models/task';
-import { faCheck, faEdit, faInfo, faPlus, faSun, faUndo } from '@fortawesome/free-solid-svg-icons';
 import { Tasks } from '../../../../../imports/collections/tasks';
 import { Router } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
@@ -16,10 +15,6 @@ import { ToastService } from '../../shared/services/toast.service';
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent implements OnInit, OnDestroy {
-  addIcon = faPlus;
-  infoIcon = faInfo;
-  allDoneIcon = faSun;
-
   categories: Observable<Category[]>;
   tasks: TaskByCategory;
   taskCount: number;
@@ -28,9 +23,6 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   private categoriesSubscription: Subscription;
   private tasksSubscription: Subscription;
-  editIcon = faEdit;
-  cancelIcon = faUndo;
-  completeIcon = faCheck;
   hideCompletedTasks = true;
 
   constructor(private router: Router, private toastService: ToastService, private zone: NgZone) {
@@ -41,23 +33,24 @@ export class TaskListComponent implements OnInit, OnDestroy {
     this.categoriesSubscription = MeteorObservable.subscribe('categories').subscribe(() => {
       this.categories = Categories.find();
     });
+
     this.tasksSubscription = MeteorObservable.subscribe('tasks').subscribe(() => {
-      const dbTasks = Tasks.find().fetch();
-      this.taskCount = dbTasks.length;
-      this.completedTaskCount = dbTasks.filter(task => task.done).length;
-      this.displayedTaskCount = dbTasks.filter(task => !this.hideCompletedTasks || !task.done).length;
-      this.tasks = this.buildTaskByCategories(dbTasks);
+      Tasks.find().subscribe(dbTasks => {
+        this.taskCount = dbTasks.length;
+        this.completedTaskCount = dbTasks.filter(task => task.done).length;
+        this.displayedTaskCount = dbTasks.filter(task => !this.hideCompletedTasks || !task.done).length;
+        this.tasks = this.buildTaskByCategories();
+      });
     });
   }
 
-  private buildTaskByCategories(tasks: Task[]): TaskByCategory {
+  private buildTaskByCategories(): TaskByCategory {
     const tasksCache: TaskByCategory = {};
-    tasks.forEach(task => {
-      if (!tasksCache[task.categoryId]) {
-        tasksCache[task.categoryId] = [];
-      }
-      tasksCache[task.categoryId].push(task);
-    });
+    Categories.find()
+      .fetch()
+      .forEach(category => {
+        tasksCache[category._id] = Tasks.find({ categoryId: category._id }).fetch();
+      });
     return tasksCache;
   }
 
@@ -100,5 +93,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
         }
       });
     });
+  }
+
+  toggleCompletedTaskVisibility($event: boolean) {
+    this.hideCompletedTasks = $event;
   }
 }

@@ -1,0 +1,16 @@
+<div class="card text-white mb-3" [style.background-color]="category.color" [ngClass]="{'card-done': task.done}">
+    <div class="card-body">
+        <h5 class="card-title" placement="top" [ngbTooltip]="category.name">
+            <fa-icon [icon]="['fas', category.icon]"></fa-icon>
+            {{ task.title }}
+        </h5>
+        <quill-view-html *ngIf="task.content" class="card-text" [content]="task.content"></quill-view-html>
+    </div>
+    <div class="card-footer d-flex justify-content-end">
+        <fa-icon [icon]="editIcon" (click)="editTask(task)" placement="top" [ngbTooltip]="'Edit'"></fa-icon>&nbsp;
+        <fa-icon *ngIf="task.done" [icon]="cancelIcon" (click)="cancelTask(task)" placement="top"
+                 [ngbTooltip]="'Cancel'"></fa-icon>
+        <fa-icon *ngIf="!task.done" [icon]="completeIcon" (click)="completeTask(task)" placement="top"
+                 [ngbTooltip]="'Complete'"></fa-icon>
+    </div>
+</div>

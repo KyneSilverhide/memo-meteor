@@ -1,0 +1,21 @@
+@import "node_modules/bootswatch/dist/flatly/variables";
+
+div.action-container {
+  margin-left: 50px;
+
+  button.status {
+    cursor: default;
+  }
+}
+
+::ng-deep #done-toggle {
+  span.bootstrap-switch-handle-on {
+    background-color: $primary;
+    color: white;
+  }
+
+  span.bootstrap-switch-handle-off {
+    background-color: $secondary;
+    color: white;
+  }
+}

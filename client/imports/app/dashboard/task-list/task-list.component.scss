@@ -1,48 +1,7 @@
-@import "node_modules/bootswatch/dist/flatly/variables";
-
 h2 {
   margin: 0;
 }
 
-div.card {
-
-  div.card-body {
-    padding: 15px;
-  }
-
-  div.card-footer {
-    padding: 5px 8px 2px 0;
-
-    fa-icon {
-      cursor: pointer;
-    }
-  }
-}
-
-div.card-done {
-  filter: saturate(35%) brightness(125%)
-}
-
-div.action-container {
-  margin-left: 50px;
-
-  button.status {
-    cursor: default;
-  }
-}
-
-::ng-deep #done-toggle {
-  span.bootstrap-switch-handle-on {
-    background-color: $primary;
-    color: white;
-  }
-
-  span.bootstrap-switch-handle-off {
-    background-color: $secondary;
-    color: white;
-  }
-}
-
 ::ng-deep div.ql-editor {
-  padding: 0;
+  padding: 5px;
 }

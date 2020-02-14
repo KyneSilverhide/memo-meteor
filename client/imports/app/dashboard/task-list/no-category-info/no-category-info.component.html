@@ -1,0 +1,14 @@
+<div *ngIf="(categories | async)?.length == 0" class="alert alert-info">
+    <div class="d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+            <fa-icon [icon]="infoIcon" size="2x"></fa-icon>&nbsp;
+            Hey ! You don't have any category yet.
+        </div>
+        <a routerLink="/categories/add">
+            <button class="btn btn-primary">
+                <fa-icon [icon]="addIcon"></fa-icon>&nbsp;
+                Add a new category
+            </button>
+        </a>
+    </div>
+</div>

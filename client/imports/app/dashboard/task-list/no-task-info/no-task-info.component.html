@@ -1,0 +1,13 @@
+<div *ngIf="(categories | async)?.length > 0 && displayedTaskCount == 0"
+     class="alert alert-success d-flex justify-content-between" role="alert">
+    <div class="d-flex align-items-center">
+        <fa-icon [icon]="allDoneIcon" size="2x"></fa-icon> &nbsp;
+        Great, you don't have any task left !
+    </div>
+    <a routerLink="/dashboard/add">
+        <button class="btn btn-primary">
+            <fa-icon [icon]="addIcon"></fa-icon>
+            Add a new task
+        </button>
+    </a>
+</div>

@@ -15,6 +15,8 @@ import { QuillModule } from 'ngx-quill';
 import { QUILLCONFIG } from './quill-config';
 import { TaskOrderPipe } from './pipes/task-order.pipe';
 import { NgxBootstrapSwitchModule } from 'ngx-bootstrap-switch';
+import { CategoryModalComponent } from './components/category-modal/category-modal.component';
+import { CategoryFormComponent } from './components/category-form/category-form.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NgxBootstrapSwitchModule } from 'ngx-bootstrap-switch';
     IconPickerComponent,
     IconFilterPipe,
     ToastsComponent,
-    TaskOrderPipe
+    TaskOrderPipe,
+    CategoryModalComponent,
+    CategoryFormComponent
   ],
   imports: [
     CommonModule,
@@ -48,8 +52,10 @@ import { NgxBootstrapSwitchModule } from 'ngx-bootstrap-switch';
     NavbarComponent,
     IconPickerComponent,
     ToastsComponent,
-    TaskOrderPipe
-  ]
+    TaskOrderPipe,
+    CategoryModalComponent
+  ],
+  entryComponents: [CategoryModalComponent]
 })
 export class SharedModule {
   constructor(library: FaIconLibrary) {

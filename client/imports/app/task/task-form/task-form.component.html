@@ -37,13 +37,19 @@
             </div>
             <div class="form-group">
                 <label for="task-title">Category</label>
-                <div class="btn-group btn-group-toggle category-selector" ngbRadioGroup name="categoryId"
-                     formControlName="categoryId">
-                    <label ngbButtonLabel class="btn btn-secondary" *ngFor="let category of userCategories | async"
-                           [style.background-color]="category.color">
-                        <input ngbButton type="radio" [value]="category._id">
-                        <fa-icon [icon]="['fas', category.icon]"></fa-icon>&nbsp;{{category.name}}
-                    </label>
+                <div class="d-flex justify-content-between">
+                    <div class="btn-group btn-group-toggle category-selector" ngbRadioGroup name="categoryId"
+                         formControlName="categoryId">
+                        <label ngbButtonLabel class="btn btn-secondary" *ngFor="let category of userCategories | async"
+                               [style.background-color]="category.color">
+                            <input ngbButton type="radio" [value]="category._id">
+                            <fa-icon [icon]="['fas', category.icon]"></fa-icon>&nbsp;{{category.name}}
+                        </label>
+                    </div>
+                    <button class="btn btn-secondary" (click)="openCategoryModal()">
+                        <fa-icon [icon]="addIcon"></fa-icon>
+                        Add a new category
+                    </button>
                 </div>
             </div>
             <div class="form-group">

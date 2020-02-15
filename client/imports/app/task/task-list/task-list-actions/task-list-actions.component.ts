@@ -8,6 +8,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 })
 export class TaskListActionsComponent {
   @Output() onToggleCompletedTasks = new EventEmitter<boolean>();
+  @Output() onOpenCategoryModal = new EventEmitter();
 
   @Input() completedTaskCount: number;
   @Input() displayedTaskCount: number;
@@ -23,5 +24,9 @@ export class TaskListActionsComponent {
   toggleHideCompletedTasks(): void {
     this.hideCompletedTasks = !this.hideCompletedTasks;
     this.onToggleCompletedTasks.emit(this.hideCompletedTasks);
+  }
+
+  openCategoryModal(): void {
+    this.onOpenCategoryModal.emit();
   }
 }

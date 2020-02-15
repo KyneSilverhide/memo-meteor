@@ -1,5 +1,5 @@
 import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
-import { faBackspace, faCheck, faSave, faTrash, faUndo } from '@fortawesome/free-solid-svg-icons';
+import { faBackspace, faCheck, faPlus, faSave, faTrash, faUndo } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, Subscription } from 'rxjs';
@@ -11,6 +11,7 @@ import { Meteor } from 'meteor/meteor';
 import { Category } from '../../../../../imports/models/category';
 import { Tasks } from '../../../../../imports/collections/tasks';
 import { TaskDeleteComponent } from './task-delete/task-delete.component';
+import { CategoryModalComponent } from '../../shared/components/category-modal/category-modal.component';
 
 @Component({
   selector: 'app-task-form',
@@ -23,6 +24,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
   cancelIcon = faUndo;
   completeIcon = faCheck;
   deleteIcon = faTrash;
+  addIcon = faPlus;
 
   taskForm = this.fb.group({
     title: ['', Validators.required],
@@ -174,5 +176,9 @@ export class TaskFormComponent implements OnInit, OnDestroy {
         }
       });
     });
+  }
+
+  openCategoryModal(): void {
+    this.modalService.open(CategoryModalComponent, { size: 'lg' });
   }
 }

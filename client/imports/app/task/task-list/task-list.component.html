@@ -1,10 +1,10 @@
 <app-task-list-actions [completedTaskCount]="completedTaskCount" [displayedTaskCount]="displayedTaskCount"
-                       (onToggleCompletedTasks)="toggleCompletedTaskVisibility($event)"
+                       (onToggleCompletedTasks)="toggleCompletedTaskVisibility($event)" (onOpenCategoryModal)="openCategoryModal()"
                        [taskCount]="taskCount"></app-task-list-actions>
 <hr/>
 
 <div class="container">
-    <app-no-category-info [categories]="categories"></app-no-category-info>
+    <app-no-category-info [categories]="categories" (onOpenCategoryModal)="openCategoryModal()"></app-no-category-info>
     <app-no-task-info [categories]="categories" [displayedTaskCount]="displayedTaskCount"></app-no-task-info>
 </div>
 

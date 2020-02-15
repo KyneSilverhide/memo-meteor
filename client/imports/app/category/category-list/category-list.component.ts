@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Category } from '../../../../../imports/models/category';
 import { Categories } from '../../../../../imports/collections/categories';
-import { CategoryDeleteComponent } from '../category-form/category-delete/category-delete.component';
+import { CategoryDeleteComponent } from './category-delete/category-delete.component';
 import { ToastService } from '../../shared/services/toast.service';
 
 @Component({

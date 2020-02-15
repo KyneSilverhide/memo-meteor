@@ -1,16 +1,16 @@
-<div class="d-flex justify-content-end align-items-center" *ngIf="taskCount > 0">
-    <div class="action-container">
-        <button type="button" class="btn btn-primary status">
+<div class="d-flex justify-content-end align-items-center">
+    <div class="action-container"  *ngIf="taskCount > 0">
+        <button type="button" class="btn btn-light status">
             Completed tasks <span class="badge badge-light">{{completedTaskCount}}</span>&nbsp;
-            <ngx-switch id="done-toggle" [status]="hideCompletedTasks" [onText]="'Hide'" [offText]="'Show'"
+            <ngx-switch *ngIf="completedTaskCount > 0" id="done-toggle" [status]="hideCompletedTasks" [onText]="'Hide'" [offText]="'Show'"
                         (statusChange)="toggleHideCompletedTasks()" size="mini">
             </ngx-switch>
         </button>&nbsp;/
-        <button type="button" class="btn btn-secondary status">
+        <button type="button" class="btn btn-light status">
             All tasks <span class="badge badge-light">{{taskCount}}</span>
         </button>
     </div>
-    <div class="action-container" *ngIf="displayedTaskCount > 0">
+    <div class="action-container">
         <a routerLink="/tasks/add">
             <button class="btn btn-primary">
                 <fa-icon [icon]="addIcon"></fa-icon>

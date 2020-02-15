@@ -8,6 +8,8 @@ import { Tasks } from '../../../../../imports/collections/tasks';
 import { Router } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
 import { ToastService } from '../../shared/services/toast.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CategoryModalComponent } from '../../shared/components/category-modal/category-modal.component';
 
 @Component({
   selector: 'app-task-list',
@@ -25,7 +27,12 @@ export class TaskListComponent implements OnInit, OnDestroy {
   private tasksSubscription: Subscription;
   hideCompletedTasks = true;
 
-  constructor(private router: Router, private toastService: ToastService, private zone: NgZone) {
+  constructor(
+    private router: Router,
+    private toastService: ToastService,
+    private zone: NgZone,
+    private modalService: NgbModal
+  ) {
     /**/
   }
 
@@ -97,5 +104,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   toggleCompletedTaskVisibility($event: boolean): void {
     this.hideCompletedTasks = $event;
+  }
+
+  openCategoryModal(): void {
+    this.modalService.open(CategoryModalComponent, { size: 'lg' });
   }
 }

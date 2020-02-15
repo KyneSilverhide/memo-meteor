@@ -7,9 +7,9 @@ import { ColorEvent } from 'ngx-color';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { MeteorObservable } from 'meteor-rxjs';
 import { Subscription } from 'rxjs';
-import { FontAwesomeIcon } from '../../shared/components/icon-picker/icon-picker.component';
-import { Categories } from '../../../../../imports/collections/categories';
-import { ToastService } from '../../shared/services/toast.service';
+import { FontAwesomeIcon } from '../icon-picker/icon-picker.component';
+import { Categories } from '../../../../../../imports/collections/categories';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-category-form',

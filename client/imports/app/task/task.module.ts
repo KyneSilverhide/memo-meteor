@@ -9,6 +9,7 @@ import { NoCategoryInfoComponent } from './task-list/no-category-info/no-categor
 import { TaskListActionsComponent } from './task-list/task-list-actions/task-list-actions.component';
 import { NoTaskInfoComponent } from './task-list/no-task-info/no-task-info.component';
 import { TaskDisplayComponent } from './task-list/task-display/task-display.component';
+import { CategoryModule } from '../category/category.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { TaskDisplayComponent } from './task-list/task-display/task-display.comp
     NoTaskInfoComponent,
     TaskDisplayComponent
   ],
-  imports: [CommonModule, SharedModule, RouterModule],
+  imports: [CommonModule, SharedModule, RouterModule, CategoryModule],
   entryComponents: [TaskDeleteComponent]
 })
 export class TaskModule {}

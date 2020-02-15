@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [CategoryFormComponent, CategoryListComponent, CategoryDeleteComponent],
   imports: [CommonModule, SharedModule, RouterModule],
+  exports: [CategoryFormComponent],
   entryComponents: [CategoryDeleteComponent]
 })
 export class CategoryModule {}

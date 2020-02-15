@@ -10,9 +10,13 @@
     </div>
     <hr/>
 
-    <div *ngIf="(categories | async)?.length == 0" class="alert alert-info" role="alert">
-        <fa-icon [icon]="infoIcon"></fa-icon>
-        Oops ! You don't have any category yet.
+    <div *ngIf="(categories | async)?.length == 0" class="alert alert-info">
+        <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+                <fa-icon [icon]="infoIcon" size="2x"></fa-icon>&nbsp;
+                Oops ! You don't have any category yet.
+            </div>
+        </div>
     </div>
 
     <table class="table table-striped">

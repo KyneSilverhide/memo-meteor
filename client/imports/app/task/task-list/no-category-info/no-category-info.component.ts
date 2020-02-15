@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, TemplateRef } from '@angular/core';
 import { faInfoCircle, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { Category } from '../../../../../../imports/models/category';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CategoryFormComponent } from '../../../category/category-form/category-form.component';
 
 @Component({
   selector: 'app-no-category-info',
@@ -14,7 +16,11 @@ export class NoCategoryInfoComponent {
 
   @Input() categories: Observable<Category[]>;
 
-  constructor() {
+  constructor(private modalService: NgbModal) {
     /**/
+  }
+
+  openCategoryModal(categoryModal: TemplateRef<any>): void {
+    this.modalService.open(categoryModal, { size: 'lg' });
   }
 }

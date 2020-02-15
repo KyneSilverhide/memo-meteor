@@ -1,4 +1,4 @@
-import { Component, NgZone, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { Component, EventEmitter, Input, NgZone, OnDestroy, OnInit, Output, TemplateRef } from '@angular/core';
 import { faBackspace, faSave } from '@fortawesome/free-solid-svg-icons';
 import { Meteor } from 'meteor/meteor';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -30,6 +30,10 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
   pickerModal: NgbModalRef;
   categorySubscription: Subscription;
 
+  @Input() isModal = false;
+
+  @Output() onCategorySaved = new EventEmitter();
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -40,19 +44,21 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      if (params.categoryId) {
-        this.categoryId = params.categoryId;
-        this.categorySubscription = MeteorObservable.subscribe('category', params.categoryId).subscribe(() => {
-          const category = Categories.findOne({ _id: this.categoryId });
-          this.categoryForm.patchValue({
-            name: category.name,
-            icon: category.icon,
-            color: category.color
+    if (!this.isModal) {
+      this.route.queryParams.subscribe(params => {
+        if (params.categoryId) {
+          this.categoryId = params.categoryId;
+          this.categorySubscription = MeteorObservable.subscribe('category', params.categoryId).subscribe(() => {
+            const category = Categories.findOne({ _id: this.categoryId });
+            this.categoryForm.patchValue({
+              name: category.name,
+              icon: category.icon,
+              color: category.color
+            });
           });
-        });
-      }
-    });
+        }
+      });
+    }
   }
 
   saveCategory(): void {
@@ -95,8 +101,7 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
     Meteor.call('addCategory', name, icon, color, error => {
       this.zone.run(() => {
         if (!error) {
-          this.goBackToList();
-          this.toastService.success('Category created !');
+          this.processSuccess(true);
         } else {
           this.toastService.error(error);
         }
@@ -104,12 +109,20 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
     });
   }
 
+  private processSuccess(isNew: boolean): void {
+    if (this.isModal) {
+      this.onCategorySaved.emit();
+    } else {
+      this.goBackToList();
+    }
+    this.toastService.success('Category ' + (isNew ? 'created' : 'edited') + ' !');
+  }
+
   private updateCategory(id, name, icon, color): void {
     Meteor.call('updateCategory', id, name, icon, color, error => {
       this.zone.run(() => {
         if (!error) {
-          this.goBackToList();
-          this.toastService.success('Category edited !');
+          this.processSuccess(false);
         } else {
           this.toastService.error(error);
         }

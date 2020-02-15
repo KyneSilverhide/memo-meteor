@@ -1,5 +1,5 @@
 import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
-import { faEdit, faInfo, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faInfoCircle, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Observable, Subscription } from 'rxjs';
 import { MeteorObservable } from 'meteor-rxjs';
 import { Meteor } from 'meteor/meteor';
@@ -17,12 +17,9 @@ import { ToastService } from '../../shared/services/toast.service';
 })
 export class CategoryListComponent implements OnInit, OnDestroy {
   deleteIcon = faTrash;
-
   addIcon = faPlus;
-
   editIcon = faEdit;
-
-  infoIcon = faInfo;
+  infoIcon = faInfoCircle;
 
   categories: Observable<Category[]>;
 

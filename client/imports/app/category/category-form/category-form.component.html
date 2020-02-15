@@ -4,7 +4,7 @@
             <h2 *ngIf="!categoryId">Create a new category</h2>
             <h2 *ngIf="categoryId">Edit category : {{categoryForm.get(['name']).value}}</h2>
             <div>
-                <button (click)="goBackToList()" class="btn btn-secondary">
+                <button (click)="goBackToList()" class="btn btn-secondary" *ngIf="!isModal">
                     <fa-icon [icon]="backIcon"></fa-icon>
                     Back to the list
                 </button>&nbsp;

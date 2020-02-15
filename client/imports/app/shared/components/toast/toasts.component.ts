@@ -11,15 +11,15 @@ export class ToastsComponent implements OnInit {
 
   constructor(private toastService: ToastService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.toasts = this.toastService.getToasts();
   }
 
-  isTemplate(toast) {
+  isTemplate(toast): boolean {
     return toast.textOrTpl instanceof TemplateRef;
   }
 
-  remove(toast: any) {
+  remove(toast: any): void {
     this.toastService.remove(toast);
     this.toasts = this.toastService.getToasts();
   }

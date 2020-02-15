@@ -95,7 +95,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
     });
   }
 
-  toggleCompletedTaskVisibility($event: boolean) {
+  toggleCompletedTaskVisibility($event: boolean): void {
     this.hideCompletedTasks = $event;
   }
 }

@@ -23,12 +23,12 @@ export class IconPickerComponent {
     });
   }
 
-  getIconObject(icon: FontAwesomeIcon) {
+  getIconObject(icon: FontAwesomeIcon): any {
     const key = Object.keys(icon)[0];
     return [key, icon[key]];
   }
 
-  chooseIcon(icon: FontAwesomeIcon) {
+  chooseIcon(icon: FontAwesomeIcon): void {
     this.iconPicked.emit(icon);
   }
 }

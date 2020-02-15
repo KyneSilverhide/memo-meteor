@@ -14,7 +14,7 @@ export class LoginComponent {
 
   constructor(private router: Router, private meteorUserService: MeteorUserService) {}
 
-  loginWithGoogle() {
+  loginWithGoogle(): void {
     Meteor.loginWithGoogle({}, error => {
       if (error) {
       } else {

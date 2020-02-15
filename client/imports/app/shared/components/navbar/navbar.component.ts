@@ -32,12 +32,12 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  toggleNavbar() {
+  toggleNavbar(): void {
     this.navbarOpen = !this.navbarOpen;
     this.cd.detectChanges();
   }
 
-  logout() {
+  logout(): void {
     Accounts.logout(() => {
       this.meteorUserService.clearUser();
       this.router.navigate(['login']);

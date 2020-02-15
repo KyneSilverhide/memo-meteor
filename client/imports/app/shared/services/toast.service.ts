@@ -10,19 +10,19 @@ export class ToastService {
     /**/
   }
 
-  show(textOrTpl: string | TemplateRef<any>, options: any = {}) {
+  show(textOrTpl: string | TemplateRef<any>, options: any = {}): void {
     this.toasts.push({ textOrTpl, ...options });
   }
 
-  success(message: string) {
+  success(message: string): void {
     this.show(message, { classname: 'bg-success text-light', delay: 3000 });
   }
 
-  error(message: string) {
+  error(message: string): void {
     this.show(message, { classname: 'bg-danger text-light', delay: 3000 });
   }
 
-  remove(toast) {
+  remove(toast): void {
     this.toasts = this.toasts.filter(t => t !== toast);
   }
 

@@ -64,7 +64,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   }
 
   editTask(task: Task): void {
-    this.router.navigate(['/dashboard/edit'], {
+    this.router.navigate(['/tasks/edit'], {
       queryParams: { taskId: task._id }
     });
   }

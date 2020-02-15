@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { LoginGuard } from './shared/guards/login.guard';
-import { DASHBOARDROUTES } from './dashboard/dashboard-routes';
-import { CATEGORYROUTES } from './category/category-routes';
+import { taskRoutes } from './task/task-routes';
+import { categoryRoutes } from './category/category-routes';
 
 const routes = [
-  ...DASHBOARDROUTES,
-  ...CATEGORYROUTES,
+  ...taskRoutes,
+  ...categoryRoutes,
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/tasks',
     pathMatch: 'full'
   },
   {

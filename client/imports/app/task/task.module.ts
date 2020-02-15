@@ -11,8 +11,16 @@ import { NoTaskInfoComponent } from './task-list/no-task-info/no-task-info.compo
 import { TaskDisplayComponent } from './task-list/task-display/task-display.component';
 
 @NgModule({
-  declarations: [TaskListComponent, TaskFormComponent, TaskDeleteComponent, NoCategoryInfoComponent, TaskListActionsComponent, NoTaskInfoComponent, TaskDisplayComponent],
+  declarations: [
+    TaskListComponent,
+    TaskFormComponent,
+    TaskDeleteComponent,
+    NoCategoryInfoComponent,
+    TaskListActionsComponent,
+    NoTaskInfoComponent,
+    TaskDisplayComponent
+  ],
   imports: [CommonModule, SharedModule, RouterModule],
   entryComponents: [TaskDeleteComponent]
 })
-export class DashboardModule {}
+export class TaskModule {}

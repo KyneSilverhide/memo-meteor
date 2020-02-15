@@ -80,7 +80,7 @@ export class TaskFormComponent implements OnInit, OnDestroy {
   }
 
   goBackToList(): void {
-    this.router.navigateByUrl('/dashboard').then(() => {
+    this.router.navigateByUrl('/tasks').then(() => {
       /**/
     });
   }

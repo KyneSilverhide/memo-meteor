@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Meteor } from 'meteor/meteor';
 import { Router } from '@angular/router';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
-import { MeteorUserService } from '../../shared/services/meteor-user.service';
+import { MeteorUserService } from '../shared/services/meteor-user.service';
 
 @Component({
   selector: 'login-component',

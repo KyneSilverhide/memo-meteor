@@ -5,9 +5,9 @@
     </button>
 </div>
 <div class="modal-body">
-    <p>Are you sure you want to delete task <strong>{{ taskName }}</strong> ?</p>
+    <p>{{ 'APP.TASK.DELETECONFIRM' | translate}} <strong>{{ taskName }}</strong> ?</p>
 </div>
 <div class="modal-footer">
-    <button (click)="activeModal.dismiss(false)" class="btn btn-secondary" type="button">Cancel</button>
-    <button (click)="activeModal.close(true)" class="btn btn-danger" type="button">Delete</button>
+    <button (click)="activeModal.dismiss(false)" class="btn btn-secondary" type="button">{{ 'APP.COMMON.CANCEL' | translate}}</button>
+    <button (click)="activeModal.close(true)" class="btn btn-danger" type="button">{{ 'APP.COMMON.DELETE' | translate}}</button>
 </div>

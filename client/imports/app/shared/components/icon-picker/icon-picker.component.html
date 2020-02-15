@@ -5,7 +5,7 @@
                 <fa-icon [icon]="searchIcon"></fa-icon>
             </div>
         </div>
-        <input [(ngModel)]="searchText" class="form-control" ngbAutofocus placeholder="Search for an icon..." type="text">
+        <input [(ngModel)]="searchText" class="form-control" ngbAutofocus [placeholder]="'APP.ICONPICKER.SEARCH' | translate" type="text">
     </div>
     <hr>
     <ng-container *ngFor="let icon of icons | iconFilter:searchText">

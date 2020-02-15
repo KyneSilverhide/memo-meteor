@@ -1,42 +1,42 @@
 <div class="container">
     <form [formGroup]="taskForm">
         <div class="d-flex justify-content-between align-items-center">
-            <h2 *ngIf="!taskId">Create a new task</h2>
-            <h2 *ngIf="taskId">Edit task : {{taskForm.get(['title']).value}}</h2>
+            <h2 *ngIf="!taskId">{{ 'APP.TASK.CREATE' | translate}}</h2>
+            <h2 *ngIf="taskId">{{ 'APP.TASK.EDIT' | translate}} : {{taskForm.get(['title']).value}}</h2>
             <div class="actions">
                 <button (click)="goBackToList()" class="btn btn-secondary">
                     <fa-icon [icon]="backIcon"></fa-icon>
-                    Back to the list
+                    {{ 'APP.COMMON.BACK' | translate}}
                 </button>
                 <button *ngIf="taskId && !done" (click)="completeTask()" class="btn btn-success" type="submit">
                     <fa-icon [icon]="completeIcon"></fa-icon>
-                    Complete
+                    {{ 'APP.TASK.COMPLETE' | translate}}
                 </button>
                 <button *ngIf="taskId && done" (click)="cancelTask()" class="btn btn-secondary" type="submit">
                     <fa-icon [icon]="cancelIcon"></fa-icon>
-                    Cancel
+                    {{ 'APP.TASK.CANCEL' | translate}}
                 </button>
                 <button *ngIf="taskId" (click)="deleteTask()" class="btn btn-danger" type="submit">
                     <fa-icon [icon]="deleteIcon"></fa-icon>
-                    Delete
+                    {{ 'APP.COMMON.DELETE' | translate}}
                 </button>
                 <button (click)="saveTask()" [disabled]="taskForm.invalid"
                         [ngClass]="{'disabled': taskForm.invalid}" class="btn btn-primary" type="submit">
                     <fa-icon [icon]="saveIcon"></fa-icon>
-                    Save
+                    {{ 'APP.COMMON.SAVE' | translate}}
                 </button>
             </div>
         </div>
         <fieldset>
             <div class="form-group">
-                <label for="task-title">Title</label>
+                <label for="task-title">{{ 'APP.TASK.TITLE' | translate}}</label>
                 <input [ngClass]="{'is-invalid' : taskForm.get(['title']).dirty && taskForm.get(['title']).invalid,
                    'is-valid': taskForm.get(['title']).dirty && taskForm.get(['title']).valid}"
                        class="form-control" formControlName="title" id="task-title"
                        autocomplete="off" type="text">
             </div>
             <div class="form-group">
-                <label for="task-title">Category</label>
+                <label for="task-title">{{ 'APP.TASK.CATEGORY' | translate}}</label>
                 <div class="d-flex justify-content-between">
                     <div class="btn-group btn-group-toggle category-selector" ngbRadioGroup name="categoryId"
                          formControlName="categoryId">
@@ -48,12 +48,12 @@
                     </div>
                     <button class="btn btn-secondary" (click)="openCategoryModal()">
                         <fa-icon [icon]="addIcon"></fa-icon>
-                        Add a new category
+                        {{ 'APP.CATEGORY.ADD' | translate}}
                     </button>
                 </div>
             </div>
             <div class="form-group">
-                <label for="task-content">Content</label>
+                <label for="task-content">{{ 'APP.TASK.CONTENT' | translate}}</label>
                 <quill-editor id="task-content" [formControl]="taskForm.controls['content']"
                               [styles]="{height: '200px'}"></quill-editor>
             </div>

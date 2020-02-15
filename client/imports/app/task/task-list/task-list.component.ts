@@ -81,9 +81,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
     Meteor.call('cancelTask', task._id, error => {
       this.zone.run(() => {
         if (!error) {
-          this.toastService.success('Task ' + task.title + ' canceled !');
+          this.toastService.success('APP.TASK.CANCELSUCCESS');
         } else {
-          this.toastService.error(error);
+          this.toastService.systemError(error);
         }
       });
     });
@@ -94,9 +94,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
     Meteor.call('completeTask', task._id, error => {
       this.zone.run(() => {
         if (!error) {
-          this.toastService.success('Task ' + task.title + ' completed !');
+          this.toastService.success('APP.TASK.COMPLETESUCCESS');
         } else {
-          this.toastService.error(error);
+          this.toastService.systemError(error);
         }
       });
     });

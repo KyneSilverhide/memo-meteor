@@ -2,12 +2,13 @@
     <div class="col">
         <div class="card">
             <div class="card-header">
-                Authentication
+                {{ 'APP.LOGIN.AUTHENTICATE' | translate}}
             </div>
 
             <div class="card-body">
                 <button class="btn btn-lg btn-primary" (click)="loginWithGoogle()">
-                    <img src="/assets/img/googlelogo.svg" class="png24"> Login with google
+                    <img src="/assets/img/googlelogo.svg" alt="Google login" class="png24">
+                    {{ 'APP.LOGIN.GOOGLE' | translate}}
                 </button>
             </div>
         </div>

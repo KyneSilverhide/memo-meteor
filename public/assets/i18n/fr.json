@@ -1,0 +1,70 @@
+{
+	"APP": {
+		"ACTIONS": {
+			"LOGOUT": "Déconnnexion"
+		},
+		"CATEGORY": {
+			"ADD": "Ajouter catégorie",
+			"CREATE": "Création de catégorie",
+			"CREATESUCCESS": "Tâche créée avec succès !",
+			"DELETE": "Supprimer",
+			"DELETECONFIRM": "Etes-vous sûr de vouloir supprimer la catégorie",
+			"DELETESUCCESS": "Tâche supprimée avec succès !",
+			"DELETEWARNINGMULTI": "Cela supprimera les",
+			"DELETEWARNINGMULTIEND": "tâches dans cette catégorie !",
+			"DELETEWARNINGSINGLE": "Celà supprimera",
+			"DELETEWARNINGSINGLEEND": "tâche dans cette catégorie !",
+			"EDIT": "Edition de la catégorie",
+			"EDITSUCCESS": "Catégorie modifée avec succès",
+			"NAME": "Nom",
+			"NOCATEGORY": "Ah ! Vous n'avez pas encore de catégorie.",
+			"TITLE": "Catégories"
+		},
+		"COMMON": {
+			"BACK": "Retour à la liste",
+			"CANCEL": "Annuler",
+			"DELETE": "Supprimer",
+			"EDIT": "Editer",
+			"SAVE": "Enregistrer"
+		},
+		"ICONPICKER": {
+			"PICKICON": "Cliquez sur une icône pour la chosir",
+			"SEARCH": "Chercher une icône..."
+		},
+		"LOGIN": {
+			"AUTHENTICATE": "Authentification",
+			"GOOGLE": "S'authentifier via Google"
+		},
+		"NAVIGATION": {
+			"CATEGORIES": "Catégories",
+			"DASHBOARD": "Dashboard"
+		},
+		"NOTFOUND": "404 Page introuvable",
+		"TASK": {
+			"ADD": "Créer tâche",
+			"CANCEL": "Ré-ouvrir",
+			"CANCELSUCCESS": "Tâche ré-ouverte !",
+			"CATEGORY": "Catégorie",
+			"COLOR": "Couleur",
+			"COMPLETE": "Terminer",
+			"COMPLETESUCCESS": "Tâche terminée !",
+			"CONTENT": "Contenu",
+			"CREATE": "Création de tâche",
+			"CREATESUCCESS": "Tâche créée avec succès !",
+			"DELETECONFIRM": "Etes-vous sûr de vouloir supprimer la tâche",
+			"DELETESUCCESS": "Tâche supprimée avec succès !",
+			"EDIT": "Edition de la tâche",
+			"EDITSUCCESS": "Tâche modifiée avec succès",
+			"HIDE": "Cacher",
+			"ICON": "Icône",
+			"NOTASKLEFT": "Génial ! Il n'y a plus aucune tâche en cours !",
+			"SHOW": "Afficher",
+			"TITLE": "Titre"
+		},
+		"TASKS": {
+			"ALL": "Tâches totales",
+			"COMPLETED": "Tâches finies"
+		},
+		"TITLE": "Gestionnaire de tâches"
+	}
+}

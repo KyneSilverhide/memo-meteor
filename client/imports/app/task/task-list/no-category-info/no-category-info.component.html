@@ -2,11 +2,11 @@
     <div class="d-flex justify-content-between">
         <div class="d-flex align-items-center">
             <fa-icon [icon]="infoIcon" size="2x"></fa-icon>&nbsp;
-            Hey ! You don't have any category yet.
+            {{ 'APP.CATEGORY.NOCATEGORY' | translate}}
         </div>
         <button class="btn btn-primary" (click)="openCategoryModal()">
             <fa-icon [icon]="addIcon"></fa-icon>&nbsp;
-            Add a new category
+            {{ 'APP.CATEGORY.ADD' | translate}}
         </button>
     </div>
 </div>

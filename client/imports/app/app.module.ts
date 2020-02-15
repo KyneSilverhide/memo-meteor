@@ -8,6 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { CategoryModule } from './category/category.module';
 import { TaskModule } from './task/task.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   imports: [
@@ -17,6 +24,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TaskModule,
     FormsModule,
     SharedModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
     AppRoutingModule
   ],
   declarations: [AppComponent, LoginComponent],

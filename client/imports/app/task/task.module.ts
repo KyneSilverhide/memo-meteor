@@ -10,6 +10,7 @@ import { TaskListActionsComponent } from './task-list/task-list-actions/task-lis
 import { NoTaskInfoComponent } from './task-list/no-task-info/no-task-info.component';
 import { TaskDisplayComponent } from './task-list/task-display/task-display.component';
 import { CategoryModule } from '../category/category.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { CategoryModule } from '../category/category.module';
     NoTaskInfoComponent,
     TaskDisplayComponent
   ],
-  imports: [CommonModule, SharedModule, RouterModule, CategoryModule],
+  imports: [CommonModule, SharedModule, RouterModule, CategoryModule, TranslateModule],
   entryComponents: [TaskDeleteComponent]
 })
 export class TaskModule {}

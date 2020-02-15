@@ -17,6 +17,7 @@ import { TaskOrderPipe } from './pipes/task-order.pipe';
 import { NgxBootstrapSwitchModule } from 'ngx-bootstrap-switch';
 import { CategoryModalComponent } from './components/category-modal/category-modal.component';
 import { CategoryFormComponent } from './components/category-form/category-form.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CategoryFormComponent } from './components/category-form/category-form.
     ReactiveFormsModule,
     ColorCircleModule,
     NgxBootstrapSwitchModule,
-    QuillModule.forRoot(QUILLCONFIG)
+    QuillModule.forRoot(QUILLCONFIG),
+    TranslateModule
   ],
   exports: [
     CommonModule,

@@ -92,9 +92,9 @@ export class TaskFormComponent implements OnInit, OnDestroy {
       this.zone.run(() => {
         if (!error) {
           this.goBackToList();
-          this.toastService.success('Task created !');
+          this.toastService.success('APP.TASK.CREATESUCCESS');
         } else {
-          this.toastService.error(error);
+          this.toastService.systemError(error);
         }
       });
     });
@@ -105,9 +105,9 @@ export class TaskFormComponent implements OnInit, OnDestroy {
       this.zone.run(() => {
         if (!error) {
           this.goBackToList();
-          this.toastService.success('Task edited !');
+          this.toastService.success('APP.TASK.EDITSUCCESS');
         } else {
-          this.toastService.error(error);
+          this.toastService.systemError(error);
         }
       });
     });
@@ -127,9 +127,9 @@ export class TaskFormComponent implements OnInit, OnDestroy {
       this.zone.run(() => {
         if (!error) {
           this.done = false;
-          this.toastService.success('Task ' + this.taskForm.get(['title']).value + ' canceled !');
+          this.toastService.success('APP.TASK.CANCELSUCCESS');
         } else {
-          this.toastService.error(error);
+          this.toastService.systemError(error);
         }
       });
     });
@@ -140,9 +140,9 @@ export class TaskFormComponent implements OnInit, OnDestroy {
       this.zone.run(() => {
         if (!error) {
           this.done = true;
-          this.toastService.success('Task ' + this.taskForm.get(['title']).value + ' completed !');
+          this.toastService.success('APP.TASK.COMPLETESUCCESS');
         } else {
-          this.toastService.error(error);
+          this.toastService.systemError(error);
         }
       });
     });
@@ -169,10 +169,10 @@ export class TaskFormComponent implements OnInit, OnDestroy {
     Meteor.call('removeTask', this.taskId, error => {
       this.zone.run(() => {
         if (!error) {
-          this.toastService.success('Task ' + this.taskForm.get(['title']).value + ' deleted !');
+          this.toastService.success('APP.TASK.DELETESUCCESS');
           this.goBackToList();
         } else {
-          this.toastService.error(error);
+          this.toastService.systemError(error);
         }
       });
     });

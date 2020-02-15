@@ -66,9 +66,9 @@ export class CategoryListComponent implements OnInit, OnDestroy {
     Meteor.call('removeCategory', category._id, error => {
       this.zone.run(() => {
         if (!error) {
-          this.toastService.success('Category deleted !');
+          this.toastService.success('APP.CATEGORY.DELETESUCCESS');
         } else {
-          this.toastService.error(error);
+          this.toastService.systemError(error);
         }
       });
     });

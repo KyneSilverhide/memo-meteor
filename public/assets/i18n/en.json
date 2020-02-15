@@ -1,0 +1,70 @@
+{
+	"APP": {
+		"ACTIONS": {
+			"LOGOUT": "Logout"
+		},
+		"CATEGORY": {
+			"ADD": "Add category",
+			"CREATE": "Create new category",
+			"CREATESUCCESS": "Category successfully created !",
+			"DELETE": "Delete",
+			"DELETECONFIRM": "Are you sure you want to delete category",
+			"DELETESUCCESS": "Category successfully deleted !",
+			"DELETEWARNINGMULTI": "This will delete all",
+			"DELETEWARNINGMULTIEND": "tasks in this category !",
+			"DELETEWARNINGSINGLE": "This will delete",
+			"DELETEWARNINGSINGLEEND": "task in this category !",
+			"EDIT": "Edit category",
+			"EDITSUCCESS": "Category successfully updated",
+			"NAME": "Name",
+			"NOCATEGORY": "Hey ! You don't have any category yet.",
+			"TITLE": "Categories"
+		},
+		"COMMON": {
+			"BACK": "Back to list",
+			"CANCEL": "Cancel",
+			"DELETE": "Delete",
+			"EDIT": "Edit",
+			"SAVE": "Save"
+		},
+		"ICONPICKER": {
+			"PICKICON": "Click on an icon to pick it",
+			"SEARCH": "Search icons..."
+		},
+		"LOGIN": {
+			"AUTHENTICATE": "Authentication",
+			"GOOGLE": "Authenticate with Google"
+		},
+		"NAVIGATION": {
+			"CATEGORIES": "Categories",
+			"DASHBOARD": "Dashboard"
+		},
+		"NOTFOUND": "404 Page Not Found",
+		"TASK": {
+			"ADD": "Add task",
+			"CANCEL": "Cancel",
+			"CANCELSUCCESS": "Task canceled !",
+			"CATEGORY": "Category",
+			"COLOR": "Color",
+			"COMPLETE": "Complete",
+			"COMPLETESUCCESS": "Task completed !",
+			"CONTENT": "Content",
+			"CREATE": "Create new task",
+			"CREATESUCCESS": "Task successfully created !",
+			"DELETECONFIRM": "Are you sure you want to delete task",
+			"DELETESUCCESS": "Task successfully deleted !",
+			"EDIT": "Edit task",
+			"EDITSUCCESS": "Task successfully updated",
+			"HIDE": "Hide",
+			"ICON": "Icon",
+			"NOTASKLEFT": "Great ! You don't have any task left !",
+			"SHOW": "Show",
+			"TITLE": "Title"
+		},
+		"TASKS": {
+			"ALL": "All tasks",
+			"COMPLETED": "Completed tasks"
+		},
+		"TITLE": "Tasks Dashboard"
+	}
+}

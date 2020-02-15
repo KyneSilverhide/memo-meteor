@@ -1,30 +1,30 @@
 <div class="container">
     <form [formGroup]="categoryForm">
         <div class="d-flex justify-content-between align-items-center">
-            <h2 *ngIf="!categoryId">Create a new category</h2>
-            <h2 *ngIf="categoryId">Edit category : {{categoryForm.get(['name']).value}}</h2>
+            <h2 *ngIf="!categoryId">{{ 'APP.CATEGORY.CREATE' | translate}}</h2>
+            <h2 *ngIf="categoryId">{{ 'APP.CATEGORY.EDIT' | translate}} : {{categoryForm.get(['name']).value}}</h2>
             <div>
                 <button (click)="goBackToList()" class="btn btn-secondary" *ngIf="!isModal">
                     <fa-icon [icon]="backIcon"></fa-icon>
-                    Back to the list
+                    {{ 'APP.COMMON.BACK' | translate}}
                 </button>&nbsp;
                 <button (click)="saveCategory()" [disabled]="categoryForm.invalid"
                         [ngClass]="{'disabled': categoryForm.invalid}" class="btn btn-primary" type="submit">
                     <fa-icon [icon]="saveIcon"></fa-icon>
-                    Save
+                    {{ 'APP.COMMON.SAVE' | translate}}
                 </button>
             </div>
         </div>
         <fieldset>
             <div class="form-group">
-                <label for="category-name">Name</label>
+                <label for="category-name">{{ 'APP.CATEGORY.NAME' | translate}}</label>
                 <input [ngClass]="{'is-invalid' : categoryForm.get(['name']).dirty && categoryForm.get(['name']).invalid,
                    'is-valid': categoryForm.get(['name']).dirty && categoryForm.get(['name']).valid}"
                        class="form-control" formControlName="name" id="category-name"
                        autocomplete="off" type="text">
             </div>
             <div class="form-group">
-                <label for="category-icon">Icon</label>&nbsp;
+                <label for="category-icon">{{'APP.TASK.ICON' | translate }}</label>&nbsp;
                 <button id="category-icon" type="button" class="btn btn-outline-dark mr-2 mb-2"
                         (click)="openIconPicker(content)"
                         placement="right" [ngbTooltip]="categoryForm.get(['icon']).value">
@@ -32,7 +32,7 @@
                 </button>
             </div>
             <div class="form-group">
-                <label for="category-color">Color</label>
+                <label for="category-color">{{'APP.TASK.COLOR' | translate }}</label>
                 <color-circle (onChangeComplete)="setColor($event)" [color]="categoryForm.get(['color']).value"
                               id="category-color"></color-circle>
             </div>
@@ -50,7 +50,7 @@
             <icon-picker (iconPicked)="setIcon($event)"></icon-picker>
         </div>
         <div class="modal-footer">
-            <p>Click on an icon to pick it</p>
+            <p>{{ 'APP.ICONPICKER.PICKICON' | translate}}</p>
         </div>
     </ng-template>
 </div>

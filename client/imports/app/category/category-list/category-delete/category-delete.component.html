@@ -1,19 +1,19 @@
 <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Delete category</h4>
+    <h4 class="modal-title" id="modal-basic-title">{{ 'APP.CATEGORY.DELETE' | translate }}</h4>
     <button (click)="activeModal.dismiss(false)" aria-label="Close" class="close" type="button">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 <div class="modal-body">
-    <p>Are you sure you want to delete category <strong>{{ categoryName }}</strong> ?<p>
+    <p>{{ 'APP.CATEGORY.DELETECONFIRM' | translate }} <strong>{{ categoryName }}</strong> ?<p>
     <p *ngIf="taskCount == 1">
-        This will also remove <span class="task-count">{{taskCount}}</span> task in this category !
+    {{ 'APP.CATEGORY.DELETEWARNINGSINGLE' | translate }} <span class="task-count">{{taskCount}}</span> {{ 'APP.CATEGORY.DELETEWARNINGSINGLEEND' | translate }}
     </p>
     <p *ngIf="taskCount > 1">
-        This will also remove all <span class="task-count">{{taskCount}}</span> tasks in this category !
+        {{ 'APP.CATEGORY.DELETEWARNINGMULTI' | translate }} <span class="task-count">{{taskCount}}</span> {{ 'APP.CATEGORY.DELETEWARNINGMULTIEND' | translate }}
     </p>
 </div>
 <div class="modal-footer">
-    <button (click)="activeModal.dismiss(false)" class="btn btn-secondary" type="button">Cancel</button>
-    <button (click)="activeModal.close(true)" class="btn btn-danger" type="button">Delete</button>
+    <button (click)="activeModal.dismiss(false)" class="btn btn-secondary" type="button">{{ 'APP.COMMON.CANCEL' | translate }}</button>
+    <button (click)="activeModal.close(true)" class="btn btn-danger" type="button">{{ 'APP.COMMON.DELETE' | translate }}</button>
 </div>

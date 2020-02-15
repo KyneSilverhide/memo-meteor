@@ -1,4 +1,5 @@
 import { Injectable, TemplateRef } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable, TemplateRef } from '@angular/core';
 export class ToastService {
   private toasts: any[] = [];
 
-  constructor() {
+  constructor(private translate: TranslateService) {
     /**/
   }
 
@@ -14,11 +15,15 @@ export class ToastService {
     this.toasts.push({ textOrTpl, ...options });
   }
 
-  success(message: string): void {
-    this.show(message, { classname: 'bg-success text-light', delay: 3000 });
+  success(translateKey: string): void {
+    this.show(this.translate.instant(translateKey), { classname: 'bg-success text-light', delay: 3000 });
   }
 
-  error(message: string): void {
+  error(translateKey: string): void {
+    this.show(this.translate.instant(translateKey), { classname: 'bg-danger text-light', delay: 3000 });
+  }
+
+  systemError(message: string): void {
     this.show(message, { classname: 'bg-danger text-light', delay: 3000 });
   }
 

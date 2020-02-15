@@ -103,7 +103,7 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
         if (!error) {
           this.processSuccess(true);
         } else {
-          this.toastService.error(error);
+          this.toastService.systemError(error);
         }
       });
     });
@@ -115,7 +115,11 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
     } else {
       this.goBackToList();
     }
-    this.toastService.success('Category ' + (isNew ? 'created' : 'edited') + ' !');
+    if (isNew) {
+      this.toastService.success('APP.CATEGORY.CREATESUCCESS');
+    } else {
+      this.toastService.success('APP.CATEGORY.EDITSUCCESS');
+    }
   }
 
   private updateCategory(id, name, icon, color): void {
@@ -124,7 +128,7 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
         if (!error) {
           this.processSuccess(false);
         } else {
-          this.toastService.error(error);
+          this.toastService.systemError(error);
         }
       });
     });

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
+import { Category } from '../../../../../../imports/models/category';
 
 @Component({
   selector: 'app-task-list-actions',
@@ -13,6 +15,7 @@ export class TaskListActionsComponent {
   @Input() completedTaskCount: number;
   @Input() displayedTaskCount: number;
   @Input() taskCount: number;
+  @Input() categories: Observable<Category[]>;
 
   hideCompletedTasks: boolean;
   addIcon = faPlus;

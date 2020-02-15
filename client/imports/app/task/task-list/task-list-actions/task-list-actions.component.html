@@ -11,7 +11,7 @@
         </button>
     </div>
     <div class="action-container">
-        <a routerLink="/tasks/add">
+        <a routerLink="/tasks/add" *ngIf="(categories | async)?.length">
             <button class="btn btn-primary">
                 <fa-icon [icon]="addIcon"></fa-icon>
                 Add a new task

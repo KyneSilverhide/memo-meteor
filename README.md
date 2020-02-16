@@ -3,9 +3,13 @@
 This applications is mostly a merge between a TODO list and a topic list, where each task/topic is split into categories.
 It's based on the latest meteor version, and the latest angular version (right now : Meteor 1.8 and Angular 8)
 
-Meteor : https://www.meteor.com/\
-Angular :  https://angular.io/
-Angular-Meteor : https://github.com/Urigo/angular-meteor 
+* Meteor : https://www.meteor.com/\
+* Angular :  https://angular.io/
+* Angular-Meteor : https://github.com/Urigo/angular-meteor 
+
+## Demo
+There is a live application running here : http://vps790073.ovh.net:8080 (it may be down at any time...). You can try the application using your Google account. \
+_(You can see from the code that only your mail and profile (name, avatar) is being fetched by the application.)_
 
 # How to use :
 ## Prequisites :

@@ -33,9 +33,11 @@ cd bundle/programs/server
 npm install // This works only with node 10
 ```
 
-Run the project (from /build/bundle)
+Run the project _(from /build/bundle)_\
+**Note :**
+* You will need to write a settings-production.json file based on the sample settings.json file in this project
+* You'll also have to change the Security configuration and change the URLs to be able to use Google authentication on your production server.
 ```
-MONGO_URL=mongodb://[IP]:27017/myapp PORT=[PORT] ROOT_URL=[http://...] node main.js
+MONGO_URL=mongodb://[IP]:27017/myapp PORT=[PORT] ROOT_URL=[http://...] METEOR_SETTINGS=$(cat settings-production.json) node main.js
 ```
 
-Note : You'll also have to change the Security configuration and change the URLs to be able to use Google authentication on your production server.

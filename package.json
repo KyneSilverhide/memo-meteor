@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "meteor run --settings settings.json",
-    "start:prod": "AOT=1 ROLLUP=1 meteor --production",
+    "start:prod": "AOT=1 ROLLUP=1 meteor --production --settings settings-production.json",
     "test": "TEST_BROWSER_DRIVER=puppeteer meteor test --driver-package=ardatan:mocha --raw-logs",
     "test:ci": "TEST_BROWSER_DRIVER=puppeteer meteor test --driver-package=ardatan:mocha --raw-logs --once",
     "lint": "eslint \"**/*.ts\"",

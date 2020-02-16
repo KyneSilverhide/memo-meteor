@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
     const safeLanguage = this.getSafeLanguage();
     this.translate.setDefaultLang('en');
     this.translate.use(safeLanguage);
-    console.log('USING LANGUAGE', safeLanguage);
   }
 
   getSafeLanguage(): string {

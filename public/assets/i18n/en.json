@@ -53,6 +53,11 @@
 			"CREATESUCCESS": "Task successfully created !",
 			"DELETECONFIRM": "Are you sure you want to delete task",
 			"DELETESUCCESS": "Task successfully deleted !",
+			"DISPLAY": {
+				"COLUMN": "Columns",
+				"MASONRY": "Masonry",
+				"MODE": "Display mode"
+			},
 			"EDIT": "Edit task",
 			"EDITSUCCESS": "Task successfully updated",
 			"HIDE": "Hide",

@@ -53,6 +53,11 @@
 			"CREATESUCCESS": "Tâche créée avec succès !",
 			"DELETECONFIRM": "Etes-vous sûr de vouloir supprimer la tâche",
 			"DELETESUCCESS": "Tâche supprimée avec succès !",
+			"DISPLAY": {
+				"COLUMN": "Colonnes",
+				"MASONRY": "Grille",
+				"MODE": "Affichage"
+			},
 			"EDIT": "Edition de la tâche",
 			"EDITSUCCESS": "Tâche modifiée avec succès",
 			"HIDE": "Cacher",

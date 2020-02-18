@@ -18,6 +18,7 @@ import { CategoryModalComponent } from './components/category-modal/category-mod
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ToastrModule } from 'ngx-toastr';
     NgxBootstrapSwitchModule,
     QuillModule.forRoot(QUILLCONFIG),
     TranslateModule,
-    ToastrModule.forRoot({ positionClass: 'toast-top-center', progressBar: true })
+    ToastrModule.forRoot({ positionClass: 'toast-top-center', progressBar: true }),
+    NgxMasonryModule
   ],
   exports: [
     CommonModule,
@@ -51,6 +53,7 @@ import { ToastrModule } from 'ngx-toastr';
     QuillModule,
     NgxBootstrapSwitchModule,
     ToastrModule,
+    NgxMasonryModule,
     PageNotFoundComponent,
     NavbarComponent,
     IconPickerComponent,

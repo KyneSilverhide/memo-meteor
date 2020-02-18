@@ -19,3 +19,15 @@ div.action-container {
     color: white;
   }
 }
+
+::ng-deep #mode-toggle {
+  span.bootstrap-switch-handle-on {
+    background-color: $primary;
+    color: white;
+  }
+
+  span.bootstrap-switch-handle-off {
+    background-color: $primary;
+    color: white;
+  }
+}

@@ -10,6 +10,8 @@ import { Meteor } from 'meteor/meteor';
 import { ToastService } from '../../shared/services/toast.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryModalComponent } from '../../shared/components/category-modal/category-modal.component';
+import { DisplayMode } from '../display-mode.model';
+import { StorageService } from '../../shared/services/storage.service';
 
 @Component({
   selector: 'app-task-list',
@@ -22,6 +24,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   taskCount: number;
   completedTaskCount: number;
   displayedTaskCount: number;
+  displayMode: DisplayMode;
 
   private categoriesSubscription: Subscription;
   private tasksSubscription: Subscription;
@@ -31,12 +34,14 @@ export class TaskListComponent implements OnInit, OnDestroy {
     private router: Router,
     private toastService: ToastService,
     private zone: NgZone,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private storage: StorageService
   ) {
     /**/
   }
 
   ngOnInit(): void {
+    this.displayMode = this.storage.getDisplayMode();
     this.categoriesSubscription = MeteorObservable.subscribe('categories').subscribe(() => {
       this.categories = Categories.find();
     });
@@ -108,5 +113,13 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
   openCategoryModal(): void {
     this.modalService.open(CategoryModalComponent, { size: 'lg' });
+  }
+
+  setDisplayMode($event: any): void {
+    this.displayMode = $event;
+  }
+
+  isColumnMode(): boolean {
+    return this.displayMode === DisplayMode.COLUMN;
   }
 }

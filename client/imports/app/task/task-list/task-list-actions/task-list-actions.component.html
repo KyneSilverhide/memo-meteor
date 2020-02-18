@@ -1,5 +1,14 @@
 <div class="d-flex justify-content-end align-items-center">
-    <div class="action-container"  *ngIf="taskCount > 0">
+    <div class="action-container d-flex align-items-center"  *ngIf="taskCount > 0">
+        <fa-icon *ngIf="isColumnMode()" [icon]="columnIcon" size="2x"></fa-icon>
+        <fa-icon *ngIf="!isColumnMode()" [icon]="masonryIcon" size="2x"></fa-icon>
+        &nbsp;
+        <ngx-switch *ngIf="displayedTaskCount > 0" id="mode-toggle" [status]="isColumnMode()"
+                    [onText]="'APP.TASK.DISPLAY.COLUMN' | translate" [offText]="'APP.TASK.DISPLAY.MASONRY' | translate"
+                    (statusChange)="toggleDisplayMode()" size="small">
+        </ngx-switch>
+    </div>
+    <div class="action-container" *ngIf="taskCount > 0">
         <button type="button" class="btn btn-light status">
             {{ 'APP.TASKS.COMPLETED' | translate}} <span class="badge badge-light">{{completedTaskCount}}</span>&nbsp;
             <ngx-switch *ngIf="completedTaskCount > 0" id="done-toggle" [status]="hideCompletedTasks"

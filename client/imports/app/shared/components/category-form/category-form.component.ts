@@ -23,7 +23,7 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
   categoryForm = this.fb.group({
     name: ['', Validators.required],
     icon: ['tasks', Validators.required],
-    color: ['#ffffff', Validators.required]
+    color: ['#607d8b', Validators.required]
   });
 
   categoryId: string;

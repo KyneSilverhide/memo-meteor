@@ -10,7 +10,7 @@
 
 <div class="row flex-row flex-nowrap" *ngIf="tasks">
     <ng-container *ngFor="let category of categories | async">
-        <div class="col-3" *ngIf="(tasks[category._id] | taskOrder:hideCompletedTasks).length > 0">
+        <div class="col-lg-2 col-md-3 col-sm-4" *ngIf="(tasks[category._id] | taskOrder:hideCompletedTasks).length > 0">
             <app-task-display *ngFor="let task of tasks[category._id] | taskOrder:hideCompletedTasks"
                               [category]="category" [task]="task" (onTaskCanceled)="cancelTask($event)"
                               (onTaskComplete)="completeTask($event)"

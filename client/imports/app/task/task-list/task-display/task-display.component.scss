@@ -16,3 +16,11 @@ div.card {
     }
   }
 }
+
+::ng-deep div.ql-editor {
+  padding: 5px;
+
+  a {
+    color: white;
+  }
+}

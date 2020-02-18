@@ -10,7 +10,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { IconPickerComponent } from './components/icon-picker/icon-picker.component';
 import { IconFilterPipe } from './pipes/icon-filter.pipe';
-import { ToastsComponent } from './components/toast/toasts.component';
 import { QuillModule } from 'ngx-quill';
 import { QUILLCONFIG } from './quill-config';
 import { TaskOrderPipe } from './pipes/task-order.pipe';
@@ -18,6 +17,7 @@ import { NgxBootstrapSwitchModule } from 'ngx-bootstrap-switch';
 import { CategoryModalComponent } from './components/category-modal/category-modal.component';
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,6 @@ import { TranslateModule } from '@ngx-translate/core';
     NavbarComponent,
     IconPickerComponent,
     IconFilterPipe,
-    ToastsComponent,
     TaskOrderPipe,
     CategoryModalComponent,
     CategoryFormComponent
@@ -40,7 +39,8 @@ import { TranslateModule } from '@ngx-translate/core';
     ColorCircleModule,
     NgxBootstrapSwitchModule,
     QuillModule.forRoot(QUILLCONFIG),
-    TranslateModule
+    TranslateModule,
+    ToastrModule.forRoot({ positionClass: 'toast-top-center', progressBar: true })
   ],
   exports: [
     CommonModule,
@@ -50,10 +50,10 @@ import { TranslateModule } from '@ngx-translate/core';
     ColorCircleModule,
     QuillModule,
     NgxBootstrapSwitchModule,
+    ToastrModule,
     PageNotFoundComponent,
     NavbarComponent,
     IconPickerComponent,
-    ToastsComponent,
     TaskOrderPipe,
     CategoryModalComponent
   ],

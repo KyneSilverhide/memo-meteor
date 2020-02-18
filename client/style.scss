@@ -2,6 +2,9 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootswatch/dist/flatly/bootswatch";
 
+@import 'node_modules/ngx-toastr/toastr';
+//@import 'node_modules/ngx-toastr/toastr-bs4-alert';
+
 @import "node_modules/quill/dist/quill.core";
 @import "node_modules/quill/dist/quill.snow";
 

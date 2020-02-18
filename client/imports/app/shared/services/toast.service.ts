@@ -1,37 +1,24 @@
 import { Injectable, TemplateRef } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToastService {
-  private toasts: any[] = [];
-
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private toastr: ToastrService) {
     /**/
   }
 
-  show(textOrTpl: string | TemplateRef<any>, options: any = {}): void {
-    this.toasts.push({ textOrTpl, ...options });
-  }
-
   success(translateKey: string): void {
-    this.show(this.translate.instant(translateKey), { classname: 'bg-success text-light', delay: 3000 });
+    this.toastr.success(this.translate.instant(translateKey));
   }
 
   error(translateKey: string): void {
-    this.show(this.translate.instant(translateKey), { classname: 'bg-danger text-light', delay: 3000 });
+    this.toastr.error(this.translate.instant(translateKey));
   }
 
   systemError(message: string): void {
-    this.show(message, { classname: 'bg-danger text-light', delay: 3000 });
-  }
-
-  remove(toast): void {
-    this.toasts = this.toasts.filter(t => t !== toast);
-  }
-
-  getToasts(): any[] {
-    return this.toasts;
+    this.toastr.error(message);
   }
 }

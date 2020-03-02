@@ -48,7 +48,7 @@
     "@angular/cli": "8.3.25",
     "@angular/compiler-cli": "8.2.14",
     "@biesbjerg/ngx-translate-extract": "4.2.0",
-    "@types/chai": "4.2.9",
+    "@types/chai": "4.2.10",
     "@types/meteor": "1.4.40",
     "@types/mocha": "7.0.1",
     "@types/sinon": "7.5.2",

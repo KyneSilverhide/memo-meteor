@@ -49,7 +49,7 @@
     "@angular/compiler-cli": "8.2.14",
     "@biesbjerg/ngx-translate-extract": "4.2.0",
     "@types/chai": "4.2.10",
-    "@types/meteor": "1.4.40",
+    "@types/meteor": "1.4.41",
     "@types/mocha": "7.0.2",
     "@types/sinon": "7.5.2",
     "@typescript-eslint/eslint-plugin": "2.22.0",
